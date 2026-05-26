@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T21:40:12.329311",
+  "source_file": "race_master_v9.1.xlsx",
+  "version": "v9.1",
+  "race_count": 53,
+  "bsr_count": 10,
+  "boston_count": 5,
+  "ultra_count": 9,
+  "strava_years": 5,
+  "garmin_matched": 24,
+  "tiers": {
+    "A": 9,
+    "B": 17,
+    "C": 8,
+    "D": 15,
+    "E": 3,
+    "F": 1
+  },
+  "pr": {
+    "5k_competitive": "19:21",
+    "8k": "33:41",
+    "10_mile_bsr": "1:06:54",
+    "half_marathon": "1:28:16",
+    "marathon": "2:53:35",
+    "marathon_boston": "2:54:10",
+    "50k": "3:58:13",
+    "50_mile": "8:03:54",
+    "100_mile": "21:08:43"
+  }
+}

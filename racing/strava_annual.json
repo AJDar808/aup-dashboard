@@ -1,0 +1,50 @@
+{
+  "count": 5,
+  "years": [
+    {
+      "Year": 2021,
+      "Total Miles": 2315,
+      "Total Hours": 274,
+      "Elev Gain (ft)": 28990,
+      "Avg Weekly Mi": 44.5,
+      "Races": null,
+      "Notes": "First full Strava year tracked."
+    },
+    {
+      "Year": 2022,
+      "Total Miles": 2540,
+      "Total Hours": null,
+      "Elev Gain (ft)": null,
+      "Avg Weekly Mi": null,
+      "Races": null,
+      "Notes": "TODO: pull hours/elevation from Strava export"
+    },
+    {
+      "Year": 2023,
+      "Total Miles": 2410,
+      "Total Hours": 309.75,
+      "Elev Gain (ft)": 42450,
+      "Avg Weekly Mi": 46.3,
+      "Races": null,
+      "Notes": "309h45m \u2014 strong training year"
+    },
+    {
+      "Year": 2024,
+      "Total Miles": 2580,
+      "Total Hours": 350.18,
+      "Elev Gain (ft)": 43034,
+      "Avg Weekly Mi": 49.6,
+      "Races": null,
+      "Notes": "350h11m \u2014 highest annual mileage"
+    },
+    {
+      "Year": 2025,
+      "Total Miles": 2200,
+      "Total Hours": 323.5,
+      "Elev Gain (ft)": 39179,
+      "Avg Weekly Mi": 42.3,
+      "Races": null,
+      "Notes": "323h29m \u2014 included extended travel blocks"
+    }
+  ]
+}
