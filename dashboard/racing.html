@@ -5,1104 +5,660 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Looking Glass Station — Race Records</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #E8B84B;
-    --gold-dim: #9A7A2E;
-    --navy: #0A0E1A;
-    --navy-mid: #111827;
-    --navy-card: #151C2C;
-    --navy-border: #1E2D4A;
-    --white: #F0EDE6;
-    --muted: #8896A8;
-    --tier-a: #C0392B;
-    --tier-b: #E67E22;
-    --tier-c: #D4AC0D;
-    --tier-d: #27AE60;
-    --tier-e: #2980B9;
-    --tier-f: #8E44AD;
-    --green-bright: #2ECC71;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-mono: 'Share Tech Mono', monospace;
-    --font-body: 'Inter', sans-serif;
-  }
+:root {
+  --gold:#E8B84B;--gold-dim:#9A7A2E;--navy:#0A0E1A;--navy-mid:#111827;
+  --navy-card:#151C2C;--navy-border:#1E2D4A;--navy-hover:#1C2A40;
+  --white:#F0EDE6;--muted:#8896A8;
+  --tier-a:#C0392B;--tier-b:#E67E22;--tier-c:#D4AC0D;
+  --tier-d:#27AE60;--tier-e:#2980B9;--tier-f:#8E44AD;
+  --font-d:'Bebas Neue',sans-serif;--font-m:'Share Tech Mono',monospace;
+  --font-b:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--navy);color:var(--white);font-family:var(--font-b);font-size:14px;line-height:1.6;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(232,184,75,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(232,184,75,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 80px;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* HEADER */
+.site-header{border-bottom:1px solid var(--navy-border);padding:20px 0 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;}
+.logo{font-family:var(--font-m);font-size:11px;color:var(--gold-dim);letter-spacing:.15em;text-transform:uppercase;}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-family:var(--font-m);font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
 
-  body {
-    background: var(--navy);
-    color: var(--white);
-    font-family: var(--font-body);
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+/* PAGE TITLE */
+.page-title-block{margin-bottom:48px;}
+.station-label{font-family:var(--font-m);font-size:11px;color:var(--gold-dim);letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px;}
+.page-title{font-family:var(--font-d);font-size:clamp(48px,8vw,80px);letter-spacing:.04em;color:var(--white);line-height:1;margin-bottom:12px;}
+.page-title span{color:var(--gold);}
+.page-subtitle{font-size:14px;color:var(--muted);max-width:560px;}
+.data-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,184,75,.08);border:1px solid rgba(232,184,75,.2);border-radius:4px;padding:4px 10px;font-family:var(--font-m);font-size:10px;color:var(--gold);letter-spacing:.1em;margin-top:12px;}
+.data-badge::before{content:'●';font-size:8px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
-  /* ── DHARMA GRID BACKGROUND ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(232,184,75,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(232,184,75,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* SECTION */
+.section{margin-bottom:56px;}
+.section-header{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--navy-border);}
+.section-header h2{font-family:var(--font-d);font-size:28px;letter-spacing:.05em;color:var(--white);}
+.section-sub{font-family:var(--font-m);font-size:10px;color:var(--gold-dim);letter-spacing:.15em;text-transform:uppercase;}
 
-  .page-wrap { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+/* PR CARDS */
+.pr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:56px;}
+.pr-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;padding:16px;position:relative;overflow:hidden;transition:border-color .2s;}
+.pr-card:hover{border-color:var(--gold-dim);}
+.pr-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);opacity:.4;}
+.pr-label{font-family:var(--font-m);font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;}
+.pr-value{font-family:var(--font-d);font-size:30px;letter-spacing:.03em;color:var(--gold);line-height:1;margin-bottom:4px;}
+.pr-meta{font-size:11px;color:var(--muted);}
 
-  /* ── HEADER ── */
-  .site-header {
-    border-bottom: 1px solid var(--navy-border);
-    padding: 20px 0 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 48px;
-  }
-  .site-header .logo {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--gold-dim);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-  .site-header .logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 24px; }
-  .nav-links a {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+/* MAJORS */
+.majors-progress{margin-bottom:20px;background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;padding:16px 20px;display:flex;align-items:center;gap:20px;}
+.progress-label{font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.progress-bar-wrap{flex:1;background:var(--navy-border);border-radius:3px;height:6px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:var(--gold);border-radius:3px;}
+.progress-fraction{font-family:var(--font-d);font-size:24px;color:var(--gold);white-space:nowrap;}
+.majors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:700px){.majors-grid{grid-template-columns:1fr 1fr;}}
+.major-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;padding:16px;transition:border-color .2s;}
+.major-card.done{border-color:var(--gold-dim);}
+.major-card.registered{border-color:#2980B9;}
+.major-card.planned{border-color:#3D4F6B;}
+.major-status-pill{display:inline-block;font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-bottom:10px;}
+.major-card.done .major-status-pill{background:rgba(232,184,75,.15);color:var(--gold);}
+.major-card.registered .major-status-pill{background:rgba(41,128,185,.15);color:#5DADE2;}
+.major-card.planned .major-status-pill{background:rgba(61,79,107,.3);color:var(--muted);}
+.major-card.remaining .major-status-pill{background:rgba(61,79,107,.2);color:#5D6D7E;}
+.major-name{font-family:var(--font-d);font-size:22px;letter-spacing:.04em;margin-bottom:4px;}
+.major-card.done .major-name{color:var(--gold);}
+.major-card.registered .major-name{color:#5DADE2;}
+.major-card.planned .major-name,.major-card.remaining .major-name{color:var(--muted);}
+.major-detail{font-size:12px;color:var(--muted);}
+.major-times{margin-top:8px;display:flex;flex-direction:column;gap:3px;}
+.major-time-row{font-family:var(--font-m);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;}
+.major-time-row .tv{color:var(--white);}
 
-  /* ── PAGE TITLE ── */
-  .page-title-block { margin-bottom: 48px; }
-  .station-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--gold-dim);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .page-title {
-    font-family: var(--font-display);
-    font-size: clamp(48px, 8vw, 80px);
-    letter-spacing: 0.04em;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-  .page-title span { color: var(--gold); }
-  .page-subtitle {
-    font-size: 14px;
-    color: var(--muted);
-    max-width: 560px;
-  }
-  .data-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(232,184,75,0.08);
-    border: 1px solid rgba(232,184,75,0.2);
-    border-radius: 4px;
-    padding: 4px 10px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    margin-top: 12px;
-  }
-  .data-badge::before { content: '●'; font-size: 8px; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+/* TIER LEGEND */
+.tier-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.tl-item{display:flex;align-items:center;gap:6px;font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.05em;}
+.tl-dot{width:8px;height:8px;border-radius:2px;}
 
-  /* ── SECTION HEADERS ── */
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--navy-border);
-  }
-  .section-header h2 {
-    font-family: var(--font-display);
-    font-size: 28px;
-    letter-spacing: 0.05em;
-    color: var(--white);
-  }
-  .section-header .section-sub {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--gold-dim);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-  .section { margin-bottom: 56px; }
+/* RACE TABLE */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+.filter-label{font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-right:4px;}
+.tier-btn{font-family:var(--font-m);font-size:10px;letter-spacing:.08em;padding:5px 12px;border-radius:4px;border:1px solid var(--navy-border);cursor:pointer;transition:all .15s;background:var(--navy-card);color:var(--muted);text-transform:uppercase;}
+.tier-btn:hover{border-color:var(--gold-dim);color:var(--gold);}
+.tier-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(232,184,75,.1);}
+.race-table-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--navy-border);}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead th{font-family:var(--font-m);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:10px 14px;text-align:left;border-bottom:1px solid var(--navy-border);white-space:nowrap;cursor:pointer;user-select:none;background:var(--navy-card);}
+thead th:hover{color:var(--gold);}
+thead th.sort-asc::after{content:' ↑';color:var(--gold);}
+thead th.sort-desc::after{content:' ↓';color:var(--gold);}
+tbody tr{border-bottom:1px solid rgba(30,45,74,.6);transition:background .1s;cursor:pointer;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--navy-hover);}
+tbody tr.expanded{background:var(--navy-hover);}
+tbody td{padding:11px 14px;vertical-align:middle;}
+.td-year{font-family:var(--font-m);font-size:12px;color:var(--muted);}
+.td-name{font-size:13px;font-weight:500;color:var(--white);}
+.td-time{font-family:var(--font-m);font-size:13px;color:var(--gold);font-weight:500;}
+.td-pace{font-family:var(--font-m);font-size:12px;color:var(--muted);}
+.td-place{font-family:var(--font-m);font-size:12px;color:var(--muted);}
+.tier-badge{display:inline-block;font-family:var(--font-m);font-size:9px;letter-spacing:.1em;padding:2px 7px;border-radius:3px;font-weight:600;}
+.t-A{background:rgba(192,57,43,.2);color:#E74C3C;border:1px solid rgba(192,57,43,.4);}
+.t-B{background:rgba(230,126,34,.2);color:#F39C12;border:1px solid rgba(230,126,34,.4);}
+.t-C{background:rgba(212,172,13,.2);color:#F1C40F;border:1px solid rgba(212,172,13,.4);}
+.t-D{background:rgba(39,174,96,.2);color:#2ECC71;border:1px solid rgba(39,174,96,.4);}
+.t-E{background:rgba(41,128,185,.2);color:#5DADE2;border:1px solid rgba(41,128,185,.4);}
+.t-F{background:rgba(142,68,173,.2);color:#A569BD;border:1px solid rgba(142,68,173,.4);}
+.award-badge{font-family:var(--font-m);font-size:9px;letter-spacing:.08em;padding:2px 7px;border-radius:3px;background:rgba(232,184,75,.12);color:var(--gold);border:1px solid rgba(232,184,75,.3);}
+.source-dots{display:flex;gap:4px;align-items:center;}
+.source-dot{width:7px;height:7px;border-radius:50%;}
+.dot-off{background:var(--muted);}
+.dot-strava{background:#FC4C02;}
+.dot-garmin{background:#3CD37A;}
 
-  /* ── PR CARDS ── */
-  .pr-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    margin-bottom: 56px;
-  }
-  .pr-card {
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 8px;
-    padding: 16px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .pr-card:hover { border-color: var(--gold-dim); }
-  .pr-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
-    opacity: 0.4;
-  }
-  .pr-card .pr-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .pr-card .pr-value {
-    font-family: var(--font-display);
-    font-size: 30px;
-    letter-spacing: 0.03em;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .pr-card .pr-meta {
-    font-size: 11px;
-    color: var(--muted);
-  }
+/* EXPANDABLE ROW */
+.expand-row{display:none;}
+.expand-row.open{display:table-row;}
+.expand-row td{padding:0 14px 14px;border-bottom:1px solid var(--navy-border);}
+.expand-inner{background:rgba(10,14,26,.6);border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;border:1px solid var(--navy-border);}
+.expand-stat{display:flex;flex-direction:column;gap:3px;}
+.expand-stat-label{font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.expand-stat-val{font-family:var(--font-m);font-size:13px;color:var(--white);}
+.expand-stat-val.highlight{color:var(--gold);}
+.expand-note{grid-column:1/-1;font-size:12px;color:var(--muted);padding-top:8px;border-top:1px solid var(--navy-border);margin-top:4px;}
+.expand-source-badges{display:flex;gap:6px;align-items:center;grid-column:1/-1;}
+.src-badge{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;padding:2px 8px;border-radius:3px;text-transform:uppercase;}
+.src-badge.official{background:rgba(136,150,168,.15);color:var(--muted);border:1px solid rgba(136,150,168,.3);}
+.src-badge.strava{background:rgba(252,76,2,.15);color:#FC4C02;border:1px solid rgba(252,76,2,.3);}
+.src-badge.garmin{background:rgba(60,211,122,.15);color:#3CD37A;border:1px solid rgba(60,211,122,.3);}
+.expand-chevron{transition:transform .2s;font-size:10px;color:var(--muted);margin-left:6px;}
+.expanded .expand-chevron{transform:rotate(180deg);}
 
-  /* ── ABBOTT MAJORS ── */
-  .majors-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-  @media (max-width: 700px) { .majors-grid { grid-template-columns: 1fr 1fr; } }
-  .major-card {
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 8px;
-    padding: 16px;
-    position: relative;
-    transition: border-color 0.2s;
-  }
-  .major-card.done { border-color: var(--gold-dim); }
-  .major-card.registered { border-color: #2980B9; }
-  .major-card.planned { border-color: #3D4F6B; }
-  .major-status-pill {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 3px;
-    margin-bottom: 10px;
-  }
-  .major-card.done .major-status-pill { background: rgba(232,184,75,0.15); color: var(--gold); }
-  .major-card.registered .major-status-pill { background: rgba(41,128,185,0.15); color: #5DADE2; }
-  .major-card.planned .major-status-pill { background: rgba(61,79,107,0.3); color: var(--muted); }
-  .major-card.remaining .major-status-pill { background: rgba(61,79,107,0.2); color: #5D6D7E; }
-  .major-name {
-    font-family: var(--font-display);
-    font-size: 22px;
-    letter-spacing: 0.04em;
-    margin-bottom: 4px;
-  }
-  .major-card.done .major-name { color: var(--gold); }
-  .major-card.registered .major-name { color: #5DADE2; }
-  .major-card.planned .major-name, .major-card.remaining .major-name { color: var(--muted); }
-  .major-detail {
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .major-times {
-    margin-top: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-  .major-time-row {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    display: flex;
-    justify-content: space-between;
-  }
-  .major-time-row .t-val { color: var(--white); }
-  .majors-progress {
-    margin-bottom: 20px;
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 8px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .progress-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-  .progress-bar-wrap {
-    flex: 1;
-    background: var(--navy-border);
-    border-radius: 3px;
-    height: 6px;
-    overflow: hidden;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    width: 16.66%;
-    background: var(--gold);
-    border-radius: 3px;
-    transition: width 1s ease;
-  }
-  .progress-fraction {
-    font-family: var(--font-display);
-    font-size: 24px;
-    color: var(--gold);
-    white-space: nowrap;
-  }
+/* BSR */
+.bsr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
+.bsr-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:6px;padding:12px;position:relative;transition:border-color .2s;}
+.bsr-card:hover{border-color:var(--gold-dim);}
+.bsr-card.bsr-pr{border-color:var(--gold);background:rgba(232,184,75,.06);}
+.bsr-card.bsr-pr::before{content:'PR';position:absolute;top:8px;right:8px;font-family:var(--font-m);font-size:8px;letter-spacing:.1em;color:var(--gold);background:rgba(232,184,75,.15);padding:1px 5px;border-radius:2px;}
+.bsr-year{font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.1em;margin-bottom:6px;}
+.bsr-time{font-family:var(--font-d);font-size:22px;color:var(--white);letter-spacing:.03em;margin-bottom:4px;}
+.bsr-card.bsr-pr .bsr-time{color:var(--gold);}
+.bsr-meta{font-size:11px;color:var(--muted);}
+.bsr-vtag{font-family:var(--font-m);font-size:9px;color:#5DADE2;letter-spacing:.08em;}
 
-  /* ── RACE TABLE ── */
-  .filter-bar {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-    align-items: center;
-  }
-  .filter-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-right: 4px;
-  }
-  .tier-btn {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    padding: 4px 12px;
-    border-radius: 3px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.15s;
-    background: var(--navy-card);
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  .tier-btn:hover { color: var(--white); }
-  .tier-btn.active-A { background: rgba(192,57,43,0.2); border-color: var(--tier-a); color: #E74C3C; }
-  .tier-btn.active-B { background: rgba(230,126,34,0.2); border-color: var(--tier-b); color: #F39C12; }
-  .tier-btn.active-C { background: rgba(212,172,13,0.2); border-color: var(--tier-c); color: #F1C40F; }
-  .tier-btn.active-D { background: rgba(39,174,96,0.2); border-color: var(--tier-d); color: #2ECC71; }
-  .tier-btn.active-all { background: rgba(232,184,75,0.15); border-color: var(--gold-dim); color: var(--gold); }
-  .show-all-btn {
-    margin-left: auto;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    padding: 4px 12px;
-    border-radius: 3px;
-    border: 1px solid var(--navy-border);
-    cursor: pointer;
-    background: transparent;
-    color: var(--muted);
-    text-transform: uppercase;
-    transition: all 0.15s;
-  }
-  .show-all-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+/* BOSTON */
+.boston-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.bos-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;padding:16px;position:relative;transition:border-color .2s;}
+.bos-card:hover{border-color:var(--gold-dim);}
+.bos-card.bos-virtual{border-style:dashed;opacity:.75;}
+.bos-card.bos-pr{border-color:var(--gold);}
+.bos-edition{font-family:var(--font-m);font-size:9px;letter-spacing:.15em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:6px;}
+.bos-time{font-family:var(--font-d);font-size:32px;letter-spacing:.02em;color:var(--white);line-height:1;margin-bottom:4px;}
+.bos-card.bos-pr .bos-time{color:var(--gold);}
+.bos-year{font-family:var(--font-m);font-size:10px;color:var(--muted);margin-bottom:8px;}
+.bos-stats{display:flex;gap:12px;font-family:var(--font-m);font-size:10px;color:var(--muted);border-top:1px solid var(--navy-border);padding-top:8px;margin-top:8px;}
 
-  .race-table-wrap { overflow-x: auto; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-  thead th {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 8px 12px;
-    text-align: left;
-    border-bottom: 1px solid var(--navy-border);
-    white-space: nowrap;
-    cursor: pointer;
-    user-select: none;
-  }
-  thead th:hover { color: var(--gold); }
-  tbody tr {
-    border-bottom: 1px solid rgba(30,45,74,0.5);
-    transition: background 0.1s;
-  }
-  tbody tr:hover { background: rgba(232,184,75,0.04); }
-  tbody td {
-    padding: 10px 12px;
-    vertical-align: middle;
-    color: var(--white);
-  }
-  .td-muted { color: var(--muted); font-family: var(--font-mono); font-size: 12px; }
-  .td-time {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--gold);
-    font-weight: 500;
-  }
-  .td-place { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
-  .tier-badge {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-weight: 600;
-  }
-  .t-A { background: rgba(192,57,43,0.2); color: #E74C3C; border: 1px solid rgba(192,57,43,0.4); }
-  .t-B { background: rgba(230,126,34,0.2); color: #F39C12; border: 1px solid rgba(230,126,34,0.4); }
-  .t-C { background: rgba(212,172,13,0.2); color: #F1C40F; border: 1px solid rgba(212,172,13,0.4); }
-  .t-D { background: rgba(39,174,96,0.2); color: #2ECC71; border: 1px solid rgba(39,174,96,0.4); }
-  .t-E { background: rgba(41,128,185,0.2); color: #5DADE2; border: 1px solid rgba(41,128,185,0.4); }
-  .t-F { background: rgba(142,68,173,0.2); color: #A569BD; border: 1px solid rgba(142,68,173,0.4); }
-  .award-badge {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    padding: 2px 7px;
-    border-radius: 3px;
-    background: rgba(232,184,75,0.12);
-    color: var(--gold);
-    border: 1px solid rgba(232,184,75,0.3);
-  }
-  .source-dots { display: flex; gap: 4px; }
-  .source-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-  }
-  .dot-official { background: var(--muted); }
-  .dot-strava { background: #FC4C02; }
-  .dot-garmin { background: #3CD37A; }
+/* ULTRA */
+.ultra-list{display:flex;flex-direction:column;gap:8px;}
+.ultra-row{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:90px 1fr 90px 120px 140px;gap:12px;align-items:center;transition:border-color .2s;}
+@media(max-width:800px){.ultra-row{grid-template-columns:1fr 1fr;}}
+.ultra-row.has-award{border-left:3px solid var(--gold);}
+.ultra-date{font-family:var(--font-m);font-size:11px;color:var(--muted);}
+.ultra-name{font-size:13px;font-weight:500;color:var(--white);}
+.ultra-dist{font-family:var(--font-m);font-size:11px;color:var(--muted);}
+.ultra-time{font-family:var(--font-d);font-size:20px;color:var(--gold);letter-spacing:.03em;}
+.ultra-right{display:flex;flex-direction:column;gap:4px;align-items:flex-end;}
+.ultra-place{font-family:var(--font-m);font-size:11px;color:var(--muted);}
+.ultra-award{font-family:var(--font-m);font-size:9px;color:var(--gold);background:rgba(232,184,75,.1);border:1px solid rgba(232,184,75,.25);padding:2px 7px;border-radius:3px;letter-spacing:.08em;}
 
-  /* ── BSR SECTION ── */
-  .bsr-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 10px;
-  }
-  .bsr-card {
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 6px;
-    padding: 12px;
-    transition: border-color 0.2s;
-    position: relative;
-  }
-  .bsr-card:hover { border-color: var(--gold-dim); }
-  .bsr-card.pr-year {
-    border-color: var(--gold);
-    background: rgba(232,184,75,0.06);
-  }
-  .bsr-card.pr-year::before {
-    content: 'PR';
-    position: absolute;
-    top: 8px; right: 8px;
-    font-family: var(--font-mono);
-    font-size: 8px;
-    letter-spacing: 0.1em;
-    color: var(--gold);
-    background: rgba(232,184,75,0.15);
-    padding: 1px 5px;
-    border-radius: 2px;
-  }
-  .bsr-year {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    margin-bottom: 6px;
-  }
-  .bsr-time {
-    font-family: var(--font-display);
-    font-size: 22px;
-    color: var(--white);
-    letter-spacing: 0.03em;
-    margin-bottom: 4px;
-  }
-  .bsr-card.pr-year .bsr-time { color: var(--gold); }
-  .bsr-meta { font-size: 11px; color: var(--muted); }
-  .bsr-virtual-tag {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: #5DADE2;
-    letter-spacing: 0.08em;
-  }
+/* STRAVA */
+.strava-stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:24px;}
+.strava-stat-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:6px;padding:12px 14px;}
+.strava-stat-label{font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.strava-stat-val{font-family:var(--font-d);font-size:24px;color:var(--gold);letter-spacing:.03em;}
+.strava-stat-sub{font-size:11px;color:var(--muted);}
+.strava-chart{display:flex;gap:12px;align-items:flex-end;height:160px;padding:0 8px;margin-bottom:8px;}
+.strava-bar-group{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;}
+.strava-bar-val{font-family:var(--font-m);font-size:10px;color:var(--gold);}
+.strava-bar{width:100%;background:rgba(232,184,75,.5);border-radius:3px 3px 0 0;border-top:2px solid var(--gold);min-height:4px;}
+.strava-bar-yr{font-family:var(--font-m);font-size:10px;color:var(--muted);}
+.strava-baseline{height:1px;background:var(--navy-border);margin:0 8px 8px;}
+.strava-note{font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.05em;margin-top:8px;}
 
-  /* ── BOSTON SECTION ── */
-  .boston-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-  }
-  .boston-card {
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 8px;
-    padding: 16px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .boston-card:hover { border-color: var(--gold-dim); }
-  .boston-card.virtual {
-    border-style: dashed;
-    opacity: 0.7;
-  }
-  .boston-card.best-boston { border-color: var(--gold); }
-  .boston-edition {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    color: var(--gold-dim);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .boston-time {
-    font-family: var(--font-display);
-    font-size: 32px;
-    letter-spacing: 0.02em;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .boston-card.best-boston .boston-time { color: var(--gold); }
-  .boston-year-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-  .boston-stats {
-    display: flex;
-    gap: 12px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted);
-    border-top: 1px solid var(--navy-border);
-    padding-top: 8px;
-    margin-top: 8px;
-  }
+/* LOADING */
+.loading-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;}
+.dharma-spinner{width:56px;height:56px;border:2px solid var(--navy-border);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-family:var(--font-m);font-size:11px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;}
 
-  /* ── ULTRA SECTION ── */
-  .ultra-list { display: flex; flex-direction: column; gap: 8px; }
-  .ultra-row {
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 6px;
-    padding: 14px 16px;
-    display: grid;
-    grid-template-columns: 100px 1fr auto auto auto;
-    gap: 16px;
-    align-items: center;
-    transition: border-color 0.2s;
-  }
-  .ultra-row:hover { border-color: var(--navy-border); filter: brightness(1.05); }
-  .ultra-row.has-award { border-left: 3px solid var(--gold); }
-  .ultra-date {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-  }
-  .ultra-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--white);
-  }
-  .ultra-dist {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-  .ultra-time {
-    font-family: var(--font-display);
-    font-size: 20px;
-    color: var(--gold);
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-  }
-  .ultra-place {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    text-align: right;
-    white-space: nowrap;
-  }
-  .ultra-award {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--gold);
-    background: rgba(232,184,75,0.1);
-    border: 1px solid rgba(232,184,75,0.25);
-    padding: 2px 7px;
-    border-radius: 3px;
-    letter-spacing: 0.08em;
-  }
-
-  /* ── STRAVA SECTION ── */
-  .strava-bars {
-    display: flex;
-    gap: 16px;
-    align-items: flex-end;
-    height: 140px;
-    padding: 0 8px;
-    margin-bottom: 12px;
-  }
-  .strava-bar-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    height: 100%;
-    justify-content: flex-end;
-  }
-  .strava-bar-value {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--gold);
-  }
-  .strava-bar {
-    width: 100%;
-    background: rgba(232,184,75,0.6);
-    border-radius: 3px 3px 0 0;
-    border-top: 2px solid var(--gold);
-    min-height: 4px;
-    transition: height 1s ease;
-  }
-  .strava-bar-year {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted);
-  }
-  .strava-base {
-    height: 1px;
-    background: var(--navy-border);
-    margin: 0 8px 8px;
-  }
-
-  /* ── LOADING STATE ── */
-  .loading-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 60vh;
-    gap: 16px;
-  }
-  .dharma-spinner {
-    width: 56px; height: 56px;
-    border: 2px solid var(--navy-border);
-    border-top-color: var(--gold);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-text {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  /* ── FOOTER ── */
-  .page-footer {
-    border-top: 1px solid var(--navy-border);
-    padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 48px;
-  }
-  .footer-text {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-  }
-  .footer-text span { color: var(--gold-dim); }
-
-  /* ── FADE IN ── */
-  .fade-in { animation: fadeIn 0.4s ease both; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-  .fade-in:nth-child(2) { animation-delay: 0.05s; }
-  .fade-in:nth-child(3) { animation-delay: 0.1s; }
-  .fade-in:nth-child(4) { animation-delay: 0.15s; }
+/* FOOTER */
+.page-footer{border-top:1px solid var(--navy-border);padding:20px 0;display:flex;justify-content:space-between;align-items:center;margin-top:48px;}
+.footer-text{font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.1em;}
+.footer-text span{color:var(--gold-dim);}
+.fade-in{animation:fadeIn .4s ease both;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="page-wrap">
+<header class="site-header">
+  <div class="logo">DHARMA Initiative // <span>Aup Dashboard</span></div>
+  <nav class="nav-links">
+    <a href="../dashboard/index.html">Hub</a>
+    <a href="racing.html" class="active">Racing</a>
+    <a href="island.html">The Island</a>
+    <a href="austin.html">Austin</a>
+  </nav>
+</header>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="logo">DHARMA Initiative // <span>Aup Dashboard</span></div>
-    <nav class="nav-links">
-      <a href="../dashboard/index.html">Hub</a>
-      <a href="racing.html" class="active">Racing</a>
-      <a href="island.html">The Island</a>
-      <a href="austin.html">Austin</a>
-    </nav>
-  </header>
+<div id="loading" class="loading-screen">
+  <div class="dharma-spinner"></div>
+  <div class="loading-text">Fetching race records...</div>
+</div>
 
-  <!-- LOADING STATE -->
-  <div id="loading" class="loading-screen">
-    <div class="dharma-spinner"></div>
-    <div class="loading-text">Fetching race records...</div>
+<div id="main" style="display:none">
+
+  <div class="page-title-block fade-in">
+    <div class="station-label">Station 4 — The Looking Glass</div>
+    <h1 class="page-title">Race <span>Records</span></h1>
+    <p class="page-subtitle" id="subtitle"></p>
+    <div class="data-badge" id="badge"></div>
   </div>
 
-  <!-- MAIN CONTENT (hidden until data loads) -->
-  <div id="main-content" style="display:none">
+  <div class="pr-grid fade-in" id="pr-grid"></div>
 
-    <!-- PAGE TITLE -->
-    <div class="page-title-block fade-in">
-      <div class="station-label">Station 4 — The Looking Glass</div>
-      <h1 class="page-title">Race <span>Records</span></h1>
-      <p class="page-subtitle" id="subtitle-text">Loading race data...</p>
-      <div class="data-badge" id="data-badge">Live from GitHub</div>
+  <!-- ABBOTT MAJORS -->
+  <div class="section fade-in">
+    <div class="section-header">
+      <h2>Abbott World Marathon Majors</h2>
+      <span class="section-sub">6 Majors Challenge</span>
+    </div>
+    <div class="majors-progress">
+      <span class="progress-label">Progress toward Six Star</span>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:16.66%"></div></div>
+      <span class="progress-fraction">1 / 6</span>
+    </div>
+    <div class="majors-grid" id="majors-grid"></div>
+  </div>
+
+  <!-- ALL RACES -->
+  <div class="section fade-in">
+    <div class="section-header">
+      <h2>All Races</h2>
+      <span class="section-sub" id="race-count-label">—</span>
     </div>
 
-    <!-- PR CARDS -->
-    <div class="pr-grid fade-in" id="pr-grid"></div>
-
-    <!-- ABBOTT MAJORS -->
-    <div class="section fade-in">
-      <div class="section-header">
-        <h2>Abbott World Marathon Majors</h2>
-        <span class="section-sub">Six Majors Challenge</span>
-      </div>
-      <div class="majors-progress">
-        <span class="progress-label">Progress</span>
-        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="majors-bar"></div></div>
-        <span class="progress-fraction" id="majors-fraction">1/6</span>
-      </div>
-      <div class="majors-grid" id="majors-grid"></div>
+    <div class="tier-legend">
+      <span class="tl-item"><span class="tl-dot" style="background:#C0392B"></span>A — Ultra</span>
+      <span class="tl-item"><span class="tl-dot" style="background:#E67E22"></span>B — Marathon</span>
+      <span class="tl-item"><span class="tl-dot" style="background:#D4AC0D"></span>C — Half Marathon</span>
+      <span class="tl-item"><span class="tl-dot" style="background:#27AE60"></span>D — Road Race</span>
+      <span class="tl-item"><span class="tl-dot" style="background:#2980B9"></span>E — Charity/Fun Run</span>
+      <span class="tl-item"><span class="tl-dot" style="background:#8E44AD"></span>F — Challenge</span>
     </div>
 
-    <!-- RACE TABLE -->
-    <div class="section fade-in">
-      <div class="section-header">
-        <h2>All Races</h2>
-        <span class="section-sub" id="race-count-label">Loading...</span>
-      </div>
-      <div class="filter-bar" id="filter-bar">
-        <span class="filter-label">Tier:</span>
-        <button class="tier-btn active-all" data-tier="serious" onclick="filterTier('serious',this)">Serious Races</button>
-        <button class="tier-btn" data-tier="A" onclick="filterTier('A',this)">A — Ultra</button>
-        <button class="tier-btn" data-tier="B" onclick="filterTier('B',this)">B — Marathon</button>
-        <button class="tier-btn" data-tier="C" onclick="filterTier('C',this)">C — Half</button>
-        <button class="tier-btn" data-tier="D" onclick="filterTier('D',this)">D — Road</button>
-        <button class="show-all-btn" onclick="filterTier('all',this)">Show All 53</button>
-      </div>
-      <div class="race-table-wrap">
-        <table id="race-table">
-          <thead>
-            <tr>
-              <th onclick="sortTable('date')">Year</th>
-              <th onclick="sortTable('name')">Race</th>
-              <th>Tier</th>
-              <th onclick="sortTable('time')">Chip Time</th>
-              <th>Pace</th>
-              <th>OA Place</th>
-              <th>Award</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody id="race-tbody"></tbody>
-        </table>
-      </div>
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <button class="tier-btn active" data-f="all" onclick="setFilter('all',this)">All Tiers</button>
+      <button class="tier-btn" data-f="A" onclick="setFilter('A',this)">A — Ultra</button>
+      <button class="tier-btn" data-f="B" onclick="setFilter('B',this)">B — Marathon</button>
+      <button class="tier-btn" data-f="C" onclick="setFilter('C',this)">C — Half</button>
+      <button class="tier-btn" data-f="D" onclick="setFilter('D',this)">D — Road</button>
+      <button class="tier-btn" data-f="E" onclick="setFilter('E',this)">E — Charity</button>
+      <button class="tier-btn" data-f="F" onclick="setFilter('F',this)">F — Challenge</button>
     </div>
 
-    <!-- BSR HISTORY -->
-    <div class="section fade-in">
-      <div class="section-header">
-        <h2>Broad Street Run History</h2>
-        <span class="section-sub">2016 – 2026 · 10 Miles</span>
-      </div>
-      <div class="bsr-grid" id="bsr-grid"></div>
+    <div class="race-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th onclick="doSort('date')" id="th-date">Year</th>
+            <th onclick="doSort('name')" id="th-name">Race</th>
+            <th>Tier</th>
+            <th onclick="doSort('time')" id="th-time">Chip Time</th>
+            <th>Pace</th>
+            <th>OA Place</th>
+            <th>Award</th>
+            <th>Data</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="race-tbody"></tbody>
+      </table>
     </div>
+  </div>
 
-    <!-- BOSTON HISTORY -->
-    <div class="section fade-in">
-      <div class="section-header">
-        <h2>Boston Marathon</h2>
-        <span class="section-sub">125th · 127th · 129th · 130th</span>
-      </div>
-      <div class="boston-cards" id="boston-cards"></div>
+  <!-- BSR -->
+  <div class="section fade-in">
+    <div class="section-header">
+      <h2>Broad Street Run History</h2>
+      <span class="section-sub">10 Miles · Philadelphia · 2016–2026</span>
     </div>
+    <div class="bsr-grid" id="bsr-grid"></div>
+  </div>
 
-    <!-- ULTRA HISTORY -->
-    <div class="section fade-in">
-      <div class="section-header">
-        <h2>Ultra History</h2>
-        <span class="section-sub">Tier A — Major Ultras</span>
-      </div>
-      <div class="ultra-list" id="ultra-list"></div>
+  <!-- BOSTON -->
+  <div class="section fade-in">
+    <div class="section-header">
+      <h2>Boston Marathon</h2>
+      <span class="section-sub">Abbott Major #1 · 125th · 127th · 129th · 130th</span>
     </div>
+    <div class="boston-cards" id="boston-cards"></div>
+  </div>
 
-    <!-- STRAVA ANNUAL -->
-    <div class="section fade-in">
-      <div class="section-header">
-        <h2>Annual Mileage</h2>
-        <span class="section-sub">Strava Year in Review</span>
-      </div>
-      <div class="strava-bars" id="strava-bars"></div>
-      <div class="strava-base"></div>
+  <!-- ULTRAS -->
+  <div class="section fade-in">
+    <div class="section-header">
+      <h2>Ultra History</h2>
+      <span class="section-sub">Tier A — Solo, no crew, no pacers</span>
     </div>
+    <div class="ultra-list" id="ultra-list"></div>
+  </div>
 
-  </div><!-- /main-content -->
+  <!-- STRAVA ANNUAL -->
+  <div class="section fade-in">
+    <div class="section-header">
+      <h2>Annual Mileage</h2>
+      <span class="section-sub">Strava Year in Review — Running Only</span>
+    </div>
+    <div class="strava-stats-row" id="strava-stats"></div>
+    <div class="strava-chart" id="strava-chart"></div>
+    <div class="strava-baseline"></div>
+    <div class="strava-note">
+      Mileage data from Strava. Hours and elevation from Strava year-in-review exports.
+      Additional weekly detail available via SmashRun — add to strava_annual.json to enrich.
+    </div>
+  </div>
 
-  <!-- FOOTER -->
-  <footer class="page-footer">
-    <div class="footer-text">DHARMA Initiative // Looking Glass Station // <span id="footer-updated">—</span></div>
-    <div class="footer-text">Data: <span>AJDar808/aup-dashboard</span></div>
-  </footer>
+</div>
 
-</div><!-- /page-wrap -->
+<footer class="page-footer">
+  <div class="footer-text">DHARMA Initiative // Looking Glass Station // <span id="footer-ts">—</span></div>
+  <div class="footer-text">Source: <span>AJDar808/aup-dashboard</span></div>
+</footer>
 
+</div>
 <script>
-const BASE = 'https://raw.githubusercontent.com/AJDar808/aup-dashboard/main/racing/';
-let allRaces = [];
-let currentFilter = 'serious';
-let sortCol = 'date';
-let sortDir = 1;
+const BASE='https://raw.githubusercontent.com/AJDar808/aup-dashboard/main/racing/';
+let ALL=[];
+let curFilter='all';
+let sortCol='date';
+let sortDir=-1;
 
-const MAJORS_DATA = [
-  {
-    name: 'Boston', status: 'done',
-    detail: 'Completed 4×',
-    times: [
-      { year: '2021 (125th)', time: '2:58:10' },
-      { year: '2023 (127th)', time: '2:57:19' },
-      { year: '2025 (129th)', time: '2:54:10' },
-      { year: '2026 (130th)', time: '2:55:58' },
-    ]
-  },
-  { name: 'Chicago', status: 'registered', detail: 'Oct 2026 — Registered' },
-  { name: 'New York', status: 'planned',   detail: '2027 — Planned' },
-  { name: 'London',  status: 'remaining',  detail: 'Remaining' },
-  { name: 'Berlin',  status: 'remaining',  detail: 'Remaining' },
-  { name: 'Tokyo',   status: 'remaining',  detail: 'Remaining' },
+const MAJORS=[
+  {name:'Boston',status:'done',detail:'Completed 4×',times:[
+    {yr:'2021 — 125th',t:'2:58:10'},{yr:'2023 — 127th',t:'2:57:19'},
+    {yr:'2025 — 129th',t:'2:54:10'},{yr:'2026 — 130th',t:'2:55:58'}]},
+  {name:'Chicago',status:'registered',detail:'Oct 2026 — Registered'},
+  {name:'New York',status:'planned',detail:'2027 — Planned'},
+  {name:'Tokyo',status:'remaining',detail:'Remaining'},
+  {name:'London',status:'remaining',detail:'Remaining'},
+  {name:'Berlin',status:'remaining',detail:'Remaining'},
 ];
 
-async function fetchAll() {
-  try {
-    const [racesRes, bsrRes, bostonRes, ultrasRes, stravaRes, metaRes] = await Promise.all([
-      fetch(BASE + 'races.json'),
-      fetch(BASE + 'bsr.json'),
-      fetch(BASE + 'boston.json'),
-      fetch(BASE + 'ultras.json'),
-      fetch(BASE + 'strava_annual.json'),
-      fetch(BASE + 'meta.json'),
-    ]);
-    const races   = await racesRes.json();
-    const bsr     = await bsrRes.json();
-    const boston  = await bostonRes.json();
-    const ultras  = await ultrasRes.json();
-    const strava  = await stravaRes.json();
-    const meta    = await metaRes.json();
+function gf(r,...ks){for(const k of ks){const v=r[k];if(v!==null&&v!==undefined&&v!=='')return v;}return null;}
+function isV(r){const v=gf(r,'Virtual');return String(v||'').toLowerCase().includes('true')||String(v||'')==='✓';}
 
-    allRaces = races.races || [];
-    renderAll(races, bsr, boston, ultras, strava, meta);
-  } catch(e) {
-    document.getElementById('loading').innerHTML =
-      '<div style="font-family:var(--font-mono);color:#E74C3C;font-size:12px;text-align:center">' +
-      'Failed to load data.<br><span style="color:var(--muted)">Check console for details.</span></div>';
-    console.error(e);
+async function init(){
+  try{
+    const [rr,br,bos,ul,st,mt]=await Promise.all([
+      fetch(BASE+'races.json').then(r=>r.json()),
+      fetch(BASE+'bsr.json').then(r=>r.json()),
+      fetch(BASE+'boston.json').then(r=>r.json()),
+      fetch(BASE+'ultras.json').then(r=>r.json()),
+      fetch(BASE+'strava_annual.json').then(r=>r.json()),
+      fetch(BASE+'meta.json').then(r=>r.json()),
+    ]);
+    ALL=rr.races||[];
+    document.getElementById('loading').style.display='none';
+    document.getElementById('main').style.display='block';
+    renderHeader(mt);
+    renderPRs(mt);
+    renderMajors();
+    renderTable(ALL,curFilter);
+    renderBSR(br.races||[]);
+    renderBoston(bos.races||[]);
+    renderUltras(ul.races||[]);
+    renderStrava(st.years||[]);
+  }catch(e){
+    document.getElementById('loading').innerHTML=
+      '<div style="font-family:var(--font-m);color:#E74C3C;font-size:12px;text-align:center">Failed to load data.<br><span style="color:var(--muted)">'+e.message+'</span></div>';
   }
 }
 
-function renderAll(races, bsr, boston, ultras, strava, meta) {
-  document.getElementById('loading').style.display = 'none';
-  document.getElementById('main-content').style.display = 'block';
-
-  // Subtitle
-  document.getElementById('subtitle-text').textContent =
-    `${meta.race_count} races across ${new Date().getFullYear() - 2012} years of competition — marathons, ultras, and everything in between.`;
-  document.getElementById('data-badge').textContent =
-    `Live · ${meta.race_count} races · Garmin: ${meta.garmin_matched} · Strava: ${meta.strava_years} years`;
-  document.getElementById('footer-updated').textContent =
-    'Generated ' + new Date(meta.generated_at).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
-
-  renderPRs(meta);
-  renderMajors();
-  renderRaceTable(allRaces, currentFilter);
-  renderBSR(bsr.races || []);
-  renderBoston(boston.races || []);
-  renderUltras(ultras.races || []);
-  renderStrava(strava.years || []);
+function renderHeader(mt){
+  document.getElementById('subtitle').textContent=
+    `${mt.race_count} races · 2012–2026 · Marathons, ultras, and road races.`;
+  document.getElementById('badge').textContent=
+    `Live · ${mt.race_count} races · Garmin: ${mt.garmin_matched} · Strava: ${mt.strava_years} years`;
+  document.getElementById('footer-ts').textContent=
+    'Generated '+new Date(mt.generated_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
 }
 
-function renderPRs(meta) {
-  const prs = meta.pr || {};
-  const cards = [
-    { label: 'Marathon PR',    value: '2:53:35', meta: 'Philly 2023' },
-    { label: 'Boston PR',      value: prs.marathon_boston || '2:54:10', meta: '129th Boston 2025' },
-    { label: 'Half Marathon',  value: prs.half_marathon || '1:28:16', meta: 'Philly 2022' },
-    { label: 'BSR (10 Mile)',  value: prs['10_mile_bsr'] || '1:06:54', meta: 'BSR 2024' },
-    { label: '100 Mile PR',    value: prs['100_mile'] || '21:08:43', meta: 'Brazos Bend 2024' },
-    { label: 'Total Races',    value: String(meta.race_count || 53), meta: '2012 – 2026' },
+function renderPRs(mt){
+  const p=mt.pr||{};
+  const cards=[
+    {label:'Marathon PR',val:'2:53:35',meta:'Philly 2023'},
+    {label:'Boston PR',val:p.marathon_boston||'2:54:10',meta:'129th · 2025'},
+    {label:'Half Marathon PR',val:p.half_marathon||'1:28:16',meta:'Philly 2022'},
+    {label:'BSR PR (10 Mile)',val:p['10_mile_bsr']||'1:06:54',meta:'BSR 2024'},
+    {label:'100 Mile PR',val:p['100_mile']||'21:08:43',meta:'Brazos Bend 2024'},
+    {label:'Total Races',val:String(mt.race_count||53),meta:'2012 – 2026'},
   ];
-  document.getElementById('pr-grid').innerHTML = cards.map(c => `
+  document.getElementById('pr-grid').innerHTML=cards.map(c=>`
     <div class="pr-card">
       <div class="pr-label">${c.label}</div>
-      <div class="pr-value">${c.value}</div>
+      <div class="pr-value">${c.val}</div>
       <div class="pr-meta">${c.meta}</div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function renderMajors() {
-  document.getElementById('majors-fraction').textContent = '1/6';
-  document.getElementById('majors-grid').innerHTML = MAJORS_DATA.map(m => {
-    const statusLabel = {done:'Completed',registered:'Registered',planned:'Planned',remaining:'Remaining'}[m.status];
-    const timesHTML = m.times ? m.times.map(t =>
-      `<div class="major-time-row"><span>${t.year}</span><span class="t-val">${t.time}</span></div>`
-    ).join('') : '';
-    return `
-      <div class="major-card ${m.status}">
-        <div class="major-status-pill">${statusLabel}</div>
-        <div class="major-name">${m.name}</div>
-        <div class="major-detail">${m.detail}</div>
-        ${timesHTML ? `<div class="major-times">${timesHTML}</div>` : ''}
-      </div>
-    `;
-  }).join('');
+function renderMajors(){
+  const sl={done:'Completed',registered:'Registered',planned:'Planned',remaining:'Remaining'};
+  document.getElementById('majors-grid').innerHTML=MAJORS.map(m=>`
+    <div class="major-card ${m.status}">
+      <div class="major-status-pill">${sl[m.status]}</div>
+      <div class="major-name">${m.name}</div>
+      <div class="major-detail">${m.detail}</div>
+      ${m.times?'<div class="major-times">'+m.times.map(t=>`<div class="major-time-row"><span>${t.yr}</span><span class="tv">${t.t}</span></div>`).join('')+'</div>':''}
+    </div>`).join('');
 }
 
-function getField(r, ...keys) {
-  for (const k of keys) {
-    if (r[k] !== null && r[k] !== undefined && r[k] !== '') return r[k];
+function filterRaces(races,f){
+  if(f==='all')return races;
+  return races.filter(r=>String(gf(r,'Tier')||'').trim()===f);
+}
+
+function doSort(col){
+  const thMap={date:'th-date',name:'th-name',time:'th-time'};
+  document.querySelectorAll('thead th').forEach(t=>t.className='');
+  if(sortCol===col)sortDir*=-1; else{sortCol=col;sortDir=1;}
+  const th=document.getElementById(thMap[col]);
+  if(th)th.className=sortDir===1?'sort-asc':'sort-desc';
+  renderTable(ALL,curFilter);
+}
+
+function setFilter(f,btn){
+  curFilter=f;
+  document.querySelectorAll('.tier-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTable(ALL,f);
+}
+
+let expandedId=null;
+function toggleExpand(id){
+  const row=document.getElementById('exp-'+id);
+  const tr=document.getElementById('tr-'+id);
+  if(!row)return;
+  if(expandedId&&expandedId!==id){
+    const prev=document.getElementById('exp-'+expandedId);
+    const prevTr=document.getElementById('tr-'+expandedId);
+    if(prev)prev.classList.remove('open');
+    if(prevTr)prevTr.classList.remove('expanded');
   }
-  return null;
+  const isOpen=row.classList.contains('open');
+  row.classList.toggle('open',!isOpen);
+  tr.classList.toggle('expanded',!isOpen);
+  expandedId=isOpen?null:id;
 }
 
-function sourceDots(r) {
-  const badges = r.data_badges || ['OFFICIAL'];
-  return `<div class="source-dots">
-    <div class="source-dot dot-official" title="Official"></div>
-    ${badges.includes('STRAVA') ? '<div class="source-dot dot-strava" title="Strava"></div>' : ''}
-    ${badges.includes('GARMIN') ? '<div class="source-dot dot-garmin" title="Garmin"></div>' : ''}
-  </div>`;
-}
-
-function filterRaces(races, filter) {
-  if (filter === 'all') return races;
-  if (filter === 'serious') return races.filter(r => ['A','B','C'].includes(getField(r,'Tier')));
-  return races.filter(r => getField(r,'Tier') === filter);
-}
-
-function renderRaceTable(races, filter) {
-  const filtered = filterRaces(races, filter);
-  const sorted = [...filtered].sort((a,b) => {
-    if (sortCol === 'date') {
-      const da = getField(a,'Date','_date_str') || '';
-      const db = getField(b,'Date','_date_str') || '';
-      return sortDir * da.localeCompare(db);
-    }
-    if (sortCol === 'name') return sortDir * (getField(a,'Race Name')||'').localeCompare(getField(b,'Race Name')||'');
-    if (sortCol === 'time') return sortDir * (getField(a,'Chip Time')||'').localeCompare(getField(b,'Chip Time')||'');
+function renderTable(races,f){
+  const filtered=filterRaces(races,f);
+  const sorted=[...filtered].sort((a,b)=>{
+    if(sortCol==='date')return sortDir*(gf(a,'Date','_date_str')||'').localeCompare(gf(b,'Date','_date_str')||'');
+    if(sortCol==='name')return sortDir*(gf(a,'Race Name')||'').localeCompare(gf(b,'Race Name')||'');
+    if(sortCol==='time')return sortDir*(gf(a,'Chip Time')||'').localeCompare(gf(b,'Chip Time')||'');
     return 0;
   });
+  document.getElementById('race-count-label').textContent=
+    `${filtered.length} race${filtered.length!==1?'s':''} · click any row to expand`;
 
-  document.getElementById('race-count-label').textContent =
-    `${filtered.length} of ${races.length} races`;
+  document.getElementById('race-tbody').innerHTML=sorted.map((r,i)=>{
+    const id='r'+i;
+    const tier=String(gf(r,'Tier')||'?').trim();
+    const date=gf(r,'Date','_date_str')||'';
+    const year=date.slice(0,4);
+    const name=gf(r,'Race Name')||'';
+    const time=gf(r,'Chip Time')||'—';
+    const pace=gf(r,'Pace\n/mi')||'—';
+    const oa=gf(r,'OA\nPlace');
+    const of_=gf(r,'OA\nField');
+    const gp=gf(r,'Gender\nPlace');
+    const gf_=gf(r,'Gender\nField');
+    const ag=gf(r,'AG\nPlace');
+    const agf=gf(r,'AG\nField');
+    const agl=gf(r,'AG Label')||'';
+    const award=gf(r,'Award')||'';
+    const notes=gf(r,'Notes')||'';
+    const bib=gf(r,'BIB')||'—';
+    const ghr=gf(r,'Garmin HR')||null;
+    const gelev=gf(r,'Garmin Elev\n(ft)')||null;
+    const badges=r.data_badges||['OFFICIAL'];
+    const virt=isV(r);
 
-  const tbody = document.getElementById('race-tbody');
-  tbody.innerHTML = sorted.map(r => {
-    const tier = getField(r,'Tier') || '?';
-    const date = getField(r,'Date','_date_str') || '';
-    const year = date.slice(0,4);
-    const name = getField(r,'Race Name') || '';
-    const time = getField(r,'Chip Time') || '—';
-    const pace = getField(r,'Pace\n/mi') || '—';
-    const oa   = getField(r,'OA\nPlace');
-    const of_  = getField(r,'OA\nField');
-    const placeStr = oa ? (of_ ? `${oa} / ${of_}` : String(oa)) : '—';
-    const award = getField(r,'Award') || '';
-    const isVirtual = String(getField(r,'Virtual')||'').includes('true') ||
-                      String(getField(r,'Virtual')||'').includes('True') ||
-                      String(getField(r,'Virtual')||'') === '✓';
-    return `<tr>
-      <td class="td-muted">${year}</td>
-      <td>${name}${isVirtual ? ' <span style="font-size:10px;color:#5DADE2;font-family:var(--font-mono)">(V)</span>' : ''}</td>
+    const placeStr=oa?(of_?`${oa} / ${of_}`:String(oa)):'—';
+
+    const dots=`<div class="source-dots">
+      <div class="source-dot dot-off" title="Official"></div>
+      ${badges.includes('STRAVA')?'<div class="source-dot dot-strava" title="Strava"></div>':''}
+      ${badges.includes('GARMIN')?'<div class="source-dot dot-garmin" title="Garmin"></div>':''}
+    </div>`;
+
+    // Expanded detail row
+    const expandStats=[
+      {label:'OA Place',val:oa&&of_?`${oa} / ${of_}`:oa?String(oa):'—',hi:false},
+      {label:'Gender Place',val:gp&&gf_?`${gp} / ${gf_}`:gp?String(gp):'—',hi:false},
+      {label:'AG Place',val:ag&&agf?`${ag} / ${agf}`:ag?String(ag):'—',hi:false},
+      {label:'AG Division',val:agl||'—',hi:false},
+      {label:'BIB',val:String(bib),hi:false},
+      ...(ghr?[{label:'Avg HR (Garmin)',val:ghr+' bpm',hi:true}]:[]),
+      ...(gelev?[{label:'Elevation (Garmin)',val:gelev+' ft',hi:true}]:[]),
+    ];
+
+    const srcBadges=`<div class="expand-source-badges">
+      <span class="src-badge official">Official</span>
+      ${badges.includes('STRAVA')?'<span class="src-badge strava">Strava</span>':''}
+      ${badges.includes('GARMIN')?'<span class="src-badge garmin">Garmin</span>':''}
+    </div>`;
+
+    const expandInner=`<div class="expand-inner">
+      ${srcBadges}
+      ${expandStats.map(s=>`<div class="expand-stat">
+        <div class="expand-stat-label">${s.label}</div>
+        <div class="expand-stat-val ${s.hi?'highlight':''}">${s.val}</div>
+      </div>`).join('')}
+      ${notes?`<div class="expand-note">${notes}</div>`:''}
+    </div>`;
+
+    return `<tr id="tr-${id}" onclick="toggleExpand('${id}')">
+      <td class="td-year">${year}</td>
+      <td class="td-name">${name}${virt?' <span style="font-size:10px;color:#5DADE2;font-family:var(--font-m)">(V)</span>':''}</td>
       <td><span class="tier-badge t-${tier}">${tier}</span></td>
       <td class="td-time">${time}</td>
-      <td class="td-muted">${pace}</td>
+      <td class="td-pace">${pace}</td>
       <td class="td-place">${placeStr}</td>
-      <td>${award ? `<span class="award-badge">${award}</span>` : ''}</td>
-      <td>${sourceDots(r)}</td>
+      <td>${award?`<span class="award-badge">${award}</span>`:''}</td>
+      <td>${dots}</td>
+      <td><span class="expand-chevron">▼</span></td>
+    </tr>
+    <tr class="expand-row" id="exp-${id}">
+      <td colspan="9">${expandInner}</td>
     </tr>`;
   }).join('');
 }
 
-function filterTier(tier, btn) {
-  currentFilter = tier;
-  document.querySelectorAll('.tier-btn, .show-all-btn').forEach(b => {
-    b.className = b.classList.contains('show-all-btn') ? 'show-all-btn' : 'tier-btn';
-  });
-  if (tier === 'all') {
-    btn.style.borderColor = 'var(--gold-dim)';
-    btn.style.color = 'var(--gold)';
-  } else if (tier === 'serious') {
-    btn.className = 'tier-btn active-all';
-  } else {
-    btn.className = `tier-btn active-${tier}`;
-  }
-  renderRaceTable(allRaces, tier);
-}
-
-function sortTable(col) {
-  if (sortCol === col) sortDir *= -1;
-  else { sortCol = col; sortDir = 1; }
-  renderRaceTable(allRaces, currentFilter);
-}
-
-function renderBSR(bsrRaces) {
-  // Sort by chip time to find PR
-  const sorted = [...bsrRaces].sort((a,b) =>
-    (getField(a,'Chip Time')||'').localeCompare(getField(b,'Chip Time')||''));
-  const prTime = getField(sorted[0],'Chip Time') || '';
-
-  document.getElementById('bsr-grid').innerHTML = bsrRaces
-    .sort((a,b) => (getField(a,'Date')||'').localeCompare(getField(b,'Date')||''))
-    .map(r => {
-      const time = getField(r,'Chip Time') || '—';
-      const date = getField(r,'Date','_date_str') || '';
-      const year = date.slice(0,4);
-      const isPR = time === prTime && !String(getField(r,'Virtual')||'').toLowerCase().includes('true');
-      const isV  = String(getField(r,'Virtual')||'').toLowerCase().includes('true') ||
-                   String(getField(r,'Virtual')||'') === '✓';
-      const ag   = getField(r,'AG Label') || '';
-      const oa   = getField(r,'OA\nPlace');
-      return `<div class="bsr-card ${isPR ? 'pr-year' : ''}">
-        <div class="bsr-year">${year}${isV ? ' · <span class="bsr-virtual-tag">VIRTUAL</span>' : ''}</div>
+function renderBSR(races){
+  const real=races.filter(r=>!isV(r));
+  const prTime=real.map(r=>gf(r,'Chip Time')||'9:99').sort()[0];
+  document.getElementById('bsr-grid').innerHTML=races
+    .sort((a,b)=>(gf(a,'Date')||'').localeCompare(gf(b,'Date')||''))
+    .map(r=>{
+      const time=gf(r,'Chip Time')||'—';
+      const date=gf(r,'Date','_date_str')||'';
+      const year=date.slice(0,4);
+      const virt=isV(r);
+      const isPR=time===prTime&&!virt;
+      const ag=gf(r,'AG Label')||'';
+      const oa=gf(r,'OA\nPlace');
+      return `<div class="bsr-card ${isPR?'bsr-pr':''}">
+        <div class="bsr-year">${year}${virt?' · <span class="bsr-vtag">VIRTUAL</span>':''}</div>
         <div class="bsr-time">${time}</div>
-        <div class="bsr-meta">${ag}${oa ? ' · #' + oa + ' OA' : ''}</div>
+        <div class="bsr-meta">${ag}${oa?' · #'+oa+' OA':''}</div>
       </div>`;
     }).join('');
 }
 
-function renderBoston(bostonRaces) {
-  const realRaces = bostonRaces.filter(r =>
-    !String(getField(r,'Virtual')||'').toLowerCase().includes('true') &&
-    String(getField(r,'Virtual')||'') !== '✓');
-  const times = realRaces.map(r => getField(r,'Chip Time')||'9:99');
-  const bestTime = times.sort()[0];
-
-  document.getElementById('boston-cards').innerHTML = bostonRaces
-    .sort((a,b) => (getField(a,'Date')||'').localeCompare(getField(b,'Date')||''))
-    .map(r => {
-      const time = getField(r,'Chip Time') || '—';
-      const date = getField(r,'Date','_date_str') || '';
-      const year = date.slice(0,4);
-      const ed   = r.edition || '—';
-      const isV  = String(getField(r,'Virtual')||'').toLowerCase().includes('true') ||
-                   String(getField(r,'Virtual')||'') === '✓';
-      const isBest = time === bestTime && !isV;
-      const oa   = getField(r,'OA\nPlace');
-      const of_  = getField(r,'OA\nField');
-      const pace = getField(r,'Pace\n/mi') || '—';
-      return `<div class="boston-card ${isV ? 'virtual' : ''} ${isBest ? 'best-boston' : ''}">
-        <div class="boston-edition">${ed}${isBest ? ' · PR' : ''}</div>
-        <div class="boston-time">${time}</div>
-        <div class="boston-year-label">${year}${isV ? ' — Virtual' : ''}</div>
-        <div class="boston-stats">
+function renderBoston(races){
+  const real=races.filter(r=>!isV(r));
+  const prTime=real.map(r=>gf(r,'Chip Time')||'9:99').sort()[0];
+  document.getElementById('boston-cards').innerHTML=races
+    .sort((a,b)=>(gf(a,'Date')||'').localeCompare(gf(b,'Date')||''))
+    .map(r=>{
+      const time=gf(r,'Chip Time')||'—';
+      const date=gf(r,'Date','_date_str')||'';
+      const year=date.slice(0,4);
+      const virt=isV(r);
+      const isPR=time===prTime&&!virt;
+      const ed=r.edition||'—';
+      const oa=gf(r,'OA\nPlace');
+      const of_=gf(r,'OA\nField');
+      const pace=gf(r,'Pace\n/mi')||'—';
+      return `<div class="bos-card ${virt?'bos-virtual':''} ${isPR?'bos-pr':''}">
+        <div class="bos-edition">${ed}${isPR?' · PR':''}</div>
+        <div class="bos-time">${time}</div>
+        <div class="bos-year">${year}${virt?' — Virtual':''}</div>
+        <div class="bos-stats">
           <span>${pace} /mi</span>
-          ${oa && of_ ? `<span>#${oa} of ${of_}</span>` : ''}
+          ${oa&&of_?`<span>#${oa} of ${of_}</span>`:''}
         </div>
       </div>`;
     }).join('');
 }
 
-function renderUltras(ultraRaces) {
-  document.getElementById('ultra-list').innerHTML = ultraRaces
-    .sort((a,b) => (getField(a,'Date')||'').localeCompare(getField(b,'Date')||''))
-    .map(r => {
-      const name  = getField(r,'Race Name') || '';
-      const date  = getField(r,'Date','_date_str') || '';
-      const year  = date.slice(0,4);
-      const dist  = getField(r,'Distance') || '';
-      const time  = getField(r,'Chip Time') || '—';
-      const oa    = getField(r,'OA\nPlace');
-      const of_   = getField(r,'OA\nField');
-      const gp    = getField(r,'Gender\nPlace');
-      const award = getField(r,'Award') || '';
-      const placeStr = oa ? (of_ ? `${oa}/${of_} OA` : `#${oa} OA`) : '';
-      const genderStr = gp ? ` · ${gp}M` : '';
-      return `<div class="ultra-row ${award ? 'has-award' : ''}">
+function renderUltras(races){
+  document.getElementById('ultra-list').innerHTML=races
+    .sort((a,b)=>(gf(a,'Date')||'').localeCompare(gf(b,'Date')||''))
+    .map(r=>{
+      const date=gf(r,'Date','_date_str')||'';
+      const year=date.slice(0,4);
+      const name=gf(r,'Race Name')||'';
+      const dist=gf(r,'Distance')||'';
+      const time=gf(r,'Chip Time')||'—';
+      const oa=gf(r,'OA\nPlace');
+      const of_=gf(r,'OA\nField');
+      const gp=gf(r,'Gender\nPlace');
+      const award=gf(r,'Award')||'';
+      const placeStr=oa?(of_?`${oa}/${of_} OA`:`#${oa} OA`):'';
+      const gStr=gp?` · ${gp}M`:'';
+      return `<div class="ultra-row ${award?'has-award':''}">
         <div class="ultra-date">${year}</div>
         <div class="ultra-name">${name}</div>
         <div class="ultra-dist">${dist}</div>
         <div class="ultra-time">${time}</div>
-        <div class="ultra-place">
-          ${placeStr}${genderStr}
-          ${award ? `<br><span class="ultra-award">${award}</span>` : ''}
+        <div class="ultra-right">
+          <div class="ultra-place">${placeStr}${gStr}</div>
+          ${award?`<div class="ultra-award">${award}</div>`:''}
         </div>
       </div>`;
     }).join('');
 }
 
-function renderStrava(years) {
-  const miles = years.map(y => parseFloat(y['Total Miles']) || 0);
-  const maxMiles = Math.max(...miles, 1);
-  const container = document.getElementById('strava-bars');
-  container.innerHTML = years.map((y, i) => {
-    const mi = parseFloat(y['Total Miles']) || 0;
-    const heightPct = (mi / maxMiles) * 100;
-    const yr = y['Year'];
+function renderStrava(years){
+  const valid=years.filter(y=>parseFloat(y['Total Miles'])>0);
+  const totalMi=valid.reduce((s,y)=>s+parseFloat(y['Total Miles']||0),0);
+  const totalHr=valid.reduce((s,y)=>s+(parseFloat(y['Total Hours']||0)||0),0);
+  const avgMi=valid.length?totalMi/valid.length:0;
+  document.getElementById('strava-stats').innerHTML=[
+    {label:'Total Miles (5yr)',val:Math.round(totalMi).toLocaleString(),sub:'2021–2025'},
+    {label:'Total Hours (4yr)',val:Math.round(totalHr).toLocaleString(),sub:'Excl. 2022 (TODO)'},
+    {label:'Avg Annual Miles',val:Math.round(avgMi).toLocaleString(),sub:'Per year'},
+    {label:'Peak Year',val:'2,580',sub:'2024'},
+  ].map(c=>`<div class="strava-stat-card">
+    <div class="strava-stat-label">${c.label}</div>
+    <div class="strava-stat-val">${c.val}</div>
+    <div class="strava-stat-sub">${c.sub}</div>
+  </div>`).join('');
+
+  const maxMi=Math.max(...valid.map(y=>parseFloat(y['Total Miles']||0)),1);
+  document.getElementById('strava-chart').innerHTML=valid.map(y=>{
+    const mi=parseFloat(y['Total Miles']||0);
+    const pct=(mi/maxMi)*100;
+    const yr=y['Year'];
     return `<div class="strava-bar-group">
-      <div class="strava-bar-value">${Math.round(mi).toLocaleString()}</div>
-      <div class="strava-bar" style="height:${heightPct}%"></div>
-      <div class="strava-bar-year">${yr}</div>
+      <div class="strava-bar-val">${Math.round(mi).toLocaleString()}</div>
+      <div class="strava-bar" style="height:${pct}%"></div>
+      <div class="strava-bar-yr">${yr}</div>
     </div>`;
   }).join('');
 }
 
-fetchAll();
+init();
 </script>
 </body>
 </html>
