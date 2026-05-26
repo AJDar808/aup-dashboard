@@ -3,48 +3,83 @@
   "years": [
     {
       "Year": 2021,
-      "Total Miles": 2315,
+      "Total Miles": 2316,
       "Total Hours": 274,
       "Elev Gain (ft)": 28990,
       "Avg Weekly Mi": 44.5,
       "Races": null,
-      "Notes": "First full Strava year tracked."
+      "Notes": "First full Strava year tracked.",
+      "Avg Pace\n(min/mi)": "7:07",
+      "Avg Run\nLength (mi)": 8.7,
+      "Avg Days\nper Week": 5.1,
+      "Longest\nRun (mi)": 26.4,
+      "Longest\nStreak": "18d (Jan 5\u2013Jan 22)",
+      "Most Run\nDay": "Tuesday",
+      "% Runs\nPM": 85
     },
     {
       "Year": 2022,
-      "Total Miles": 2540,
+      "Total Miles": 2541,
       "Total Hours": null,
       "Elev Gain (ft)": null,
       "Avg Weekly Mi": null,
       "Races": null,
-      "Notes": "TODO: pull hours/elevation from Strava export"
+      "Notes": "TODO: pull hours/elevation from Strava export",
+      "Avg Pace\n(min/mi)": "7:38",
+      "Avg Run\nLength (mi)": 9.9,
+      "Avg Days\nper Week": 4.9,
+      "Longest\nRun (mi)": 100.2,
+      "Longest\nStreak": "13d (Jul 8\u2013Jul 20)",
+      "Most Run\nDay": "Sunday",
+      "% Runs\nPM": 75
     },
     {
       "Year": 2023,
-      "Total Miles": 2410,
+      "Total Miles": 2412,
       "Total Hours": 309.75,
       "Elev Gain (ft)": 42450,
       "Avg Weekly Mi": 46.3,
       "Races": null,
-      "Notes": "309h45m \u2014 strong training year"
+      "Notes": "309h45m \u2014 strong training year",
+      "Avg Pace\n(min/mi)": "7:45",
+      "Avg Run\nLength (mi)": 9.8,
+      "Avg Days\nper Week": 4.7,
+      "Longest\nRun (mi)": 100,
+      "Longest\nStreak": "25d (Jan 1\u2013Jan 25)",
+      "Most Run\nDay": "Tuesday",
+      "% Runs\nPM": 51
     },
     {
       "Year": 2024,
-      "Total Miles": 2580,
+      "Total Miles": 2582,
       "Total Hours": 350.18,
       "Elev Gain (ft)": 43034,
       "Avg Weekly Mi": 49.6,
       "Races": null,
-      "Notes": "350h11m \u2014 highest annual mileage"
+      "Notes": "350h11m \u2014 highest annual mileage",
+      "Avg Pace\n(min/mi)": "8:09",
+      "Avg Run\nLength (mi)": 10.3,
+      "Avg Days\nper Week": 4.8,
+      "Longest\nRun (mi)": 101,
+      "Longest\nStreak": "32d (May 28\u2013Jun 28)",
+      "Most Run\nDay": "Tuesday",
+      "% Runs\nPM": 45
     },
     {
       "Year": 2025,
-      "Total Miles": 2200,
+      "Total Miles": 2201,
       "Total Hours": 323.5,
       "Elev Gain (ft)": 39179,
       "Avg Weekly Mi": 42.3,
       "Races": null,
-      "Notes": "323h29m \u2014 included extended travel blocks"
+      "Notes": "323h29m \u2014 included extended travel blocks",
+      "Avg Pace\n(min/mi)": "7:55",
+      "Avg Run\nLength (mi)": 8.9,
+      "Avg Days\nper Week": 4.6,
+      "Longest\nRun (mi)": 50,
+      "Longest\nStreak": "13d (Oct 2\u2013Oct 14)",
+      "Most Run\nDay": "Monday",
+      "% Runs\nPM": 54
     }
   ]
 }

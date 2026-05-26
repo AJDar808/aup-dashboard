@@ -2,7 +2,7 @@
 """
 convert_to_json.py
 ==================
-Reads race_master_v9.1.xlsx and outputs JSON files for the Aup Dashboard.
+Reads race_master.xlsx and outputs JSON files for the Aup Dashboard.
 
 Usage (from inside your aup-dashboard folder):
     python convert_to_json.py
@@ -105,12 +105,11 @@ def load_races_sheet(path):
 
 def main():
     # Locate the Excel file
-    excel_candidates = list(Path('.').glob('race_master*.xlsx'))
-    if not excel_candidates:
-        print("ERROR: No race_master*.xlsx file found in the current folder.")
-        print("Make sure race_master_v9.1.xlsx is in the same folder as this script.")
+    excel_path = Path('race_master.xlsx')
+    if not excel_path.exists():
+        print("ERROR: race_master.xlsx not found in the current folder.")
+        print("Make sure race_master.xlsx is in the same folder as this script.")
         return
-    excel_path = sorted(excel_candidates)[-1]
     print(f"Reading: {excel_path}")
 
     out_dir = Path('racing')
@@ -200,7 +199,7 @@ def main():
     meta = {
         'generated_at':   datetime.now().isoformat(),
         'source_file':    str(excel_path),
-        'version':        'v9.1',
+        'version':        'v9.2',
         'race_count':     len(all_races),
         'bsr_count':      len(bsr_list),
         'boston_count':   len(boston_list),
