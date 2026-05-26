@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Looking Glass Station — Race Records</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #E8B84B;
+    --gold-dim: #9A7A2E;
+    --navy: #0A0E1A;
+    --navy-mid: #111827;
+    --navy-card: #151C2C;
+    --navy-border: #1E2D4A;
+    --white: #F0EDE6;
+    --muted: #8896A8;
+    --tier-a: #C0392B;
+    --tier-b: #E67E22;
+    --tier-c: #D4AC0D;
+    --tier-d: #27AE60;
+    --tier-e: #2980B9;
+    --tier-f: #8E44AD;
+    --green-bright: #2ECC71;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-mono: 'Share Tech Mono', monospace;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── DHARMA GRID BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(232,184,75,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,184,75,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── HEADER ── */
+  .site-header {
+    border-bottom: 1px solid var(--navy-border);
+    padding: 20px 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+  .site-header .logo {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .site-header .logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+  /* ── PAGE TITLE ── */
+  .page-title-block { margin-bottom: 48px; }
+  .station-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 80px);
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .page-title span { color: var(--gold); }
+  .page-subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 560px;
+  }
+  .data-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(232,184,75,0.08);
+    border: 1px solid rgba(232,184,75,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-top: 12px;
+  }
+  .data-badge::before { content: '●'; font-size: 8px; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--navy-border);
+  }
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+  }
+  .section-header .section-sub {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gold-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .section { margin-bottom: 56px; }
+
+  /* ── PR CARDS ── */
+  .pr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 56px;
+  }
+  .pr-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .pr-card:hover { border-color: var(--gold-dim); }
+  .pr-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+  .pr-card .pr-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .pr-card .pr-value {
+    font-family: var(--font-display);
+    font-size: 30px;
+    letter-spacing: 0.03em;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .pr-card .pr-meta {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ── ABBOTT MAJORS ── */
+  .majors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 700px) { .majors-grid { grid-template-columns: 1fr 1fr; } }
+  .major-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .major-card.done { border-color: var(--gold-dim); }
+  .major-card.registered { border-color: #2980B9; }
+  .major-card.planned { border-color: #3D4F6B; }
+  .major-status-pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .major-card.done .major-status-pill { background: rgba(232,184,75,0.15); color: var(--gold); }
+  .major-card.registered .major-status-pill { background: rgba(41,128,185,0.15); color: #5DADE2; }
+  .major-card.planned .major-status-pill { background: rgba(61,79,107,0.3); color: var(--muted); }
+  .major-card.remaining .major-status-pill { background: rgba(61,79,107,0.2); color: #5D6D7E; }
+  .major-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .major-card.done .major-name { color: var(--gold); }
+  .major-card.registered .major-name { color: #5DADE2; }
+  .major-card.planned .major-name, .major-card.remaining .major-name { color: var(--muted); }
+  .major-detail {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .major-times {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .major-time-row {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+  .major-time-row .t-val { color: var(--white); }
+  .majors-progress {
+    margin-bottom: 20px;
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .progress-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .progress-bar-wrap {
+    flex: 1;
+    background: var(--navy-border);
+    border-radius: 3px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    width: 16.66%;
+    background: var(--gold);
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+  .progress-fraction {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ── RACE TABLE ── */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+  .filter-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .tier-btn {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: var(--navy-card);
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .tier-btn:hover { color: var(--white); }
+  .tier-btn.active-A { background: rgba(192,57,43,0.2); border-color: var(--tier-a); color: #E74C3C; }
+  .tier-btn.active-B { background: rgba(230,126,34,0.2); border-color: var(--tier-b); color: #F39C12; }
+  .tier-btn.active-C { background: rgba(212,172,13,0.2); border-color: var(--tier-c); color: #F1C40F; }
+  .tier-btn.active-D { background: rgba(39,174,96,0.2); border-color: var(--tier-d); color: #2ECC71; }
+  .tier-btn.active-all { background: rgba(232,184,75,0.15); border-color: var(--gold-dim); color: var(--gold); }
+  .show-all-btn {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 3px;
+    border: 1px solid var(--navy-border);
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    text-transform: uppercase;
+    transition: all 0.15s;
+  }
+  .show-all-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+  .race-table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead th {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--navy-border);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  thead th:hover { color: var(--gold); }
+  tbody tr {
+    border-bottom: 1px solid rgba(30,45,74,0.5);
+    transition: background 0.1s;
+  }
+  tbody tr:hover { background: rgba(232,184,75,0.04); }
+  tbody td {
+    padding: 10px 12px;
+    vertical-align: middle;
+    color: var(--white);
+  }
+  .td-muted { color: var(--muted); font-family: var(--font-mono); font-size: 12px; }
+  .td-time {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .td-place { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+  .tier-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .t-A { background: rgba(192,57,43,0.2); color: #E74C3C; border: 1px solid rgba(192,57,43,0.4); }
+  .t-B { background: rgba(230,126,34,0.2); color: #F39C12; border: 1px solid rgba(230,126,34,0.4); }
+  .t-C { background: rgba(212,172,13,0.2); color: #F1C40F; border: 1px solid rgba(212,172,13,0.4); }
+  .t-D { background: rgba(39,174,96,0.2); color: #2ECC71; border: 1px solid rgba(39,174,96,0.4); }
+  .t-E { background: rgba(41,128,185,0.2); color: #5DADE2; border: 1px solid rgba(41,128,185,0.4); }
+  .t-F { background: rgba(142,68,173,0.2); color: #A569BD; border: 1px solid rgba(142,68,173,0.4); }
+  .award-badge {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: rgba(232,184,75,0.12);
+    color: var(--gold);
+    border: 1px solid rgba(232,184,75,0.3);
+  }
+  .source-dots { display: flex; gap: 4px; }
+  .source-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .dot-official { background: var(--muted); }
+  .dot-strava { background: #FC4C02; }
+  .dot-garmin { background: #3CD37A; }
+
+  /* ── BSR SECTION ── */
+  .bsr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+  .bsr-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 6px;
+    padding: 12px;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .bsr-card:hover { border-color: var(--gold-dim); }
+  .bsr-card.pr-year {
+    border-color: var(--gold);
+    background: rgba(232,184,75,0.06);
+  }
+  .bsr-card.pr-year::before {
+    content: 'PR';
+    position: absolute;
+    top: 8px; right: 8px;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    background: rgba(232,184,75,0.15);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+  .bsr-year {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .bsr-time {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+  }
+  .bsr-card.pr-year .bsr-time { color: var(--gold); }
+  .bsr-meta { font-size: 11px; color: var(--muted); }
+  .bsr-virtual-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #5DADE2;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── BOSTON SECTION ── */
+  .boston-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .boston-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .boston-card:hover { border-color: var(--gold-dim); }
+  .boston-card.virtual {
+    border-style: dashed;
+    opacity: 0.7;
+  }
+  .boston-card.best-boston { border-color: var(--gold); }
+  .boston-edition {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .boston-time {
+    font-family: var(--font-display);
+    font-size: 32px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .boston-card.best-boston .boston-time { color: var(--gold); }
+  .boston-year-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .boston-stats {
+    display: flex;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    border-top: 1px solid var(--navy-border);
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+
+  /* ── ULTRA SECTION ── */
+  .ultra-list { display: flex; flex-direction: column; gap: 8px; }
+  .ultra-row {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto auto;
+    gap: 16px;
+    align-items: center;
+    transition: border-color 0.2s;
+  }
+  .ultra-row:hover { border-color: var(--navy-border); filter: brightness(1.05); }
+  .ultra-row.has-award { border-left: 3px solid var(--gold); }
+  .ultra-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .ultra-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .ultra-dist {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .ultra-time {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .ultra-place {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .ultra-award {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--gold);
+    background: rgba(232,184,75,0.1);
+    border: 1px solid rgba(232,184,75,0.25);
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── STRAVA SECTION ── */
+  .strava-bars {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    height: 140px;
+    padding: 0 8px;
+    margin-bottom: 12px;
+  }
+  .strava-bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  .strava-bar-value {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+  }
+  .strava-bar {
+    width: 100%;
+    background: rgba(232,184,75,0.6);
+    border-radius: 3px 3px 0 0;
+    border-top: 2px solid var(--gold);
+    min-height: 4px;
+    transition: height 1s ease;
+  }
+  .strava-bar-year {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .strava-base {
+    height: 1px;
+    background: var(--navy-border);
+    margin: 0 8px 8px;
+  }
+
+  /* ── LOADING STATE ── */
+  .loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 16px;
+  }
+  .dharma-spinner {
+    width: 56px; height: 56px;
+    border: 2px solid var(--navy-border);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    border-top: 1px solid var(--navy-border);
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+  }
+  .footer-text {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .footer-text span { color: var(--gold-dim); }
+
+  /* ── FADE IN ── */
+  .fade-in { animation: fadeIn 0.4s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .fade-in:nth-child(2) { animation-delay: 0.05s; }
+  .fade-in:nth-child(3) { animation-delay: 0.1s; }
+  .fade-in:nth-child(4) { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">DHARMA Initiative // <span>Aup Dashboard</span></div>
+    <nav class="nav-links">
+      <a href="../dashboard/index.html">Hub</a>
+      <a href="racing.html" class="active">Racing</a>
+      <a href="island.html">The Island</a>
+      <a href="austin.html">Austin</a>
+    </nav>
+  </header>
+
+  <!-- LOADING STATE -->
+  <div id="loading" class="loading-screen">
+    <div class="dharma-spinner"></div>
+    <div class="loading-text">Fetching race records...</div>
+  </div>
+
+  <!-- MAIN CONTENT (hidden until data loads) -->
+  <div id="main-content" style="display:none">
+
+    <!-- PAGE TITLE -->
+    <div class="page-title-block fade-in">
+      <div class="station-label">Station 4 — The Looking Glass</div>
+      <h1 class="page-title">Race <span>Records</span></h1>
+      <p class="page-subtitle" id="subtitle-text">Loading race data...</p>
+      <div class="data-badge" id="data-badge">Live from GitHub</div>
+    </div>
+
+    <!-- PR CARDS -->
+    <div class="pr-grid fade-in" id="pr-grid"></div>
+
+    <!-- ABBOTT MAJORS -->
+    <div class="section fade-in">
+      <div class="section-header">
+        <h2>Abbott World Marathon Majors</h2>
+        <span class="section-sub">Six Majors Challenge</span>
+      </div>
+      <div class="majors-progress">
+        <span class="progress-label">Progress</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="majors-bar"></div></div>
+        <span class="progress-fraction" id="majors-fraction">1/6</span>
+      </div>
+      <div class="majors-grid" id="majors-grid"></div>
+    </div>
+
+    <!-- RACE TABLE -->
+    <div class="section fade-in">
+      <div class="section-header">
+        <h2>All Races</h2>
+        <span class="section-sub" id="race-count-label">Loading...</span>
+      </div>
+      <div class="filter-bar" id="filter-bar">
+        <span class="filter-label">Tier:</span>
+        <button class="tier-btn active-all" data-tier="serious" onclick="filterTier('serious',this)">Serious Races</button>
+        <button class="tier-btn" data-tier="A" onclick="filterTier('A',this)">A — Ultra</button>
+        <button class="tier-btn" data-tier="B" onclick="filterTier('B',this)">B — Marathon</button>
+        <button class="tier-btn" data-tier="C" onclick="filterTier('C',this)">C — Half</button>
+        <button class="tier-btn" data-tier="D" onclick="filterTier('D',this)">D — Road</button>
+        <button class="show-all-btn" onclick="filterTier('all',this)">Show All 53</button>
+      </div>
+      <div class="race-table-wrap">
+        <table id="race-table">
+          <thead>
+            <tr>
+              <th onclick="sortTable('date')">Year</th>
+              <th onclick="sortTable('name')">Race</th>
+              <th>Tier</th>
+              <th onclick="sortTable('time')">Chip Time</th>
+              <th>Pace</th>
+              <th>OA Place</th>
+              <th>Award</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody id="race-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- BSR HISTORY -->
+    <div class="section fade-in">
+      <div class="section-header">
+        <h2>Broad Street Run History</h2>
+        <span class="section-sub">2016 – 2026 · 10 Miles</span>
+      </div>
+      <div class="bsr-grid" id="bsr-grid"></div>
+    </div>
+
+    <!-- BOSTON HISTORY -->
+    <div class="section fade-in">
+      <div class="section-header">
+        <h2>Boston Marathon</h2>
+        <span class="section-sub">125th · 127th · 129th · 130th</span>
+      </div>
+      <div class="boston-cards" id="boston-cards"></div>
+    </div>
+
+    <!-- ULTRA HISTORY -->
+    <div class="section fade-in">
+      <div class="section-header">
+        <h2>Ultra History</h2>
+        <span class="section-sub">Tier A — Major Ultras</span>
+      </div>
+      <div class="ultra-list" id="ultra-list"></div>
+    </div>
+
+    <!-- STRAVA ANNUAL -->
+    <div class="section fade-in">
+      <div class="section-header">
+        <h2>Annual Mileage</h2>
+        <span class="section-sub">Strava Year in Review</span>
+      </div>
+      <div class="strava-bars" id="strava-bars"></div>
+      <div class="strava-base"></div>
+    </div>
+
+  </div><!-- /main-content -->
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-text">DHARMA Initiative // Looking Glass Station // <span id="footer-updated">—</span></div>
+    <div class="footer-text">Data: <span>AJDar808/aup-dashboard</span></div>
+  </footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+const BASE = 'https://raw.githubusercontent.com/AJDar808/aup-dashboard/main/racing/';
+let allRaces = [];
+let currentFilter = 'serious';
+let sortCol = 'date';
+let sortDir = 1;
+
+const MAJORS_DATA = [
+  {
+    name: 'Boston', status: 'done',
+    detail: 'Completed 4×',
+    times: [
+      { year: '2021 (125th)', time: '2:58:10' },
+      { year: '2023 (127th)', time: '2:57:19' },
+      { year: '2025 (129th)', time: '2:54:10' },
+      { year: '2026 (130th)', time: '2:55:58' },
+    ]
+  },
+  { name: 'Chicago', status: 'registered', detail: 'Oct 2026 — Registered' },
+  { name: 'New York', status: 'planned',   detail: '2027 — Planned' },
+  { name: 'London',  status: 'remaining',  detail: 'Remaining' },
+  { name: 'Berlin',  status: 'remaining',  detail: 'Remaining' },
+  { name: 'Tokyo',   status: 'remaining',  detail: 'Remaining' },
+];
+
+async function fetchAll() {
+  try {
+    const [racesRes, bsrRes, bostonRes, ultrasRes, stravaRes, metaRes] = await Promise.all([
+      fetch(BASE + 'races.json'),
+      fetch(BASE + 'bsr.json'),
+      fetch(BASE + 'boston.json'),
+      fetch(BASE + 'ultras.json'),
+      fetch(BASE + 'strava_annual.json'),
+      fetch(BASE + 'meta.json'),
+    ]);
+    const races   = await racesRes.json();
+    const bsr     = await bsrRes.json();
+    const boston  = await bostonRes.json();
+    const ultras  = await ultrasRes.json();
+    const strava  = await stravaRes.json();
+    const meta    = await metaRes.json();
+
+    allRaces = races.races || [];
+    renderAll(races, bsr, boston, ultras, strava, meta);
+  } catch(e) {
+    document.getElementById('loading').innerHTML =
+      '<div style="font-family:var(--font-mono);color:#E74C3C;font-size:12px;text-align:center">' +
+      'Failed to load data.<br><span style="color:var(--muted)">Check console for details.</span></div>';
+    console.error(e);
+  }
+}
+
+function renderAll(races, bsr, boston, ultras, strava, meta) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+
+  // Subtitle
+  document.getElementById('subtitle-text').textContent =
+    `${meta.race_count} races across ${new Date().getFullYear() - 2012} years of competition — marathons, ultras, and everything in between.`;
+  document.getElementById('data-badge').textContent =
+    `Live · ${meta.race_count} races · Garmin: ${meta.garmin_matched} · Strava: ${meta.strava_years} years`;
+  document.getElementById('footer-updated').textContent =
+    'Generated ' + new Date(meta.generated_at).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+
+  renderPRs(meta);
+  renderMajors();
+  renderRaceTable(allRaces, currentFilter);
+  renderBSR(bsr.races || []);
+  renderBoston(boston.races || []);
+  renderUltras(ultras.races || []);
+  renderStrava(strava.years || []);
+}
+
+function renderPRs(meta) {
+  const prs = meta.pr || {};
+  const cards = [
+    { label: 'Marathon PR',    value: '2:53:35', meta: 'Philly 2023' },
+    { label: 'Boston PR',      value: prs.marathon_boston || '2:54:10', meta: '129th Boston 2025' },
+    { label: 'Half Marathon',  value: prs.half_marathon || '1:28:16', meta: 'Philly 2022' },
+    { label: 'BSR (10 Mile)',  value: prs['10_mile_bsr'] || '1:06:54', meta: 'BSR 2024' },
+    { label: '100 Mile PR',    value: prs['100_mile'] || '21:08:43', meta: 'Brazos Bend 2024' },
+    { label: 'Total Races',    value: String(meta.race_count || 53), meta: '2012 – 2026' },
+  ];
+  document.getElementById('pr-grid').innerHTML = cards.map(c => `
+    <div class="pr-card">
+      <div class="pr-label">${c.label}</div>
+      <div class="pr-value">${c.value}</div>
+      <div class="pr-meta">${c.meta}</div>
+    </div>
+  `).join('');
+}
+
+function renderMajors() {
+  document.getElementById('majors-fraction').textContent = '1/6';
+  document.getElementById('majors-grid').innerHTML = MAJORS_DATA.map(m => {
+    const statusLabel = {done:'Completed',registered:'Registered',planned:'Planned',remaining:'Remaining'}[m.status];
+    const timesHTML = m.times ? m.times.map(t =>
+      `<div class="major-time-row"><span>${t.year}</span><span class="t-val">${t.time}</span></div>`
+    ).join('') : '';
+    return `
+      <div class="major-card ${m.status}">
+        <div class="major-status-pill">${statusLabel}</div>
+        <div class="major-name">${m.name}</div>
+        <div class="major-detail">${m.detail}</div>
+        ${timesHTML ? `<div class="major-times">${timesHTML}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+function getField(r, ...keys) {
+  for (const k of keys) {
+    if (r[k] !== null && r[k] !== undefined && r[k] !== '') return r[k];
+  }
+  return null;
+}
+
+function sourceDots(r) {
+  const badges = r.data_badges || ['OFFICIAL'];
+  return `<div class="source-dots">
+    <div class="source-dot dot-official" title="Official"></div>
+    ${badges.includes('STRAVA') ? '<div class="source-dot dot-strava" title="Strava"></div>' : ''}
+    ${badges.includes('GARMIN') ? '<div class="source-dot dot-garmin" title="Garmin"></div>' : ''}
+  </div>`;
+}
+
+function filterRaces(races, filter) {
+  if (filter === 'all') return races;
+  if (filter === 'serious') return races.filter(r => ['A','B','C'].includes(getField(r,'Tier')));
+  return races.filter(r => getField(r,'Tier') === filter);
+}
+
+function renderRaceTable(races, filter) {
+  const filtered = filterRaces(races, filter);
+  const sorted = [...filtered].sort((a,b) => {
+    if (sortCol === 'date') {
+      const da = getField(a,'Date','_date_str') || '';
+      const db = getField(b,'Date','_date_str') || '';
+      return sortDir * da.localeCompare(db);
+    }
+    if (sortCol === 'name') return sortDir * (getField(a,'Race Name')||'').localeCompare(getField(b,'Race Name')||'');
+    if (sortCol === 'time') return sortDir * (getField(a,'Chip Time')||'').localeCompare(getField(b,'Chip Time')||'');
+    return 0;
+  });
+
+  document.getElementById('race-count-label').textContent =
+    `${filtered.length} of ${races.length} races`;
+
+  const tbody = document.getElementById('race-tbody');
+  tbody.innerHTML = sorted.map(r => {
+    const tier = getField(r,'Tier') || '?';
+    const date = getField(r,'Date','_date_str') || '';
+    const year = date.slice(0,4);
+    const name = getField(r,'Race Name') || '';
+    const time = getField(r,'Chip Time') || '—';
+    const pace = getField(r,'Pace\n/mi') || '—';
+    const oa   = getField(r,'OA\nPlace');
+    const of_  = getField(r,'OA\nField');
+    const placeStr = oa ? (of_ ? `${oa} / ${of_}` : String(oa)) : '—';
+    const award = getField(r,'Award') || '';
+    const isVirtual = String(getField(r,'Virtual')||'').includes('true') ||
+                      String(getField(r,'Virtual')||'').includes('True') ||
+                      String(getField(r,'Virtual')||'') === '✓';
+    return `<tr>
+      <td class="td-muted">${year}</td>
+      <td>${name}${isVirtual ? ' <span style="font-size:10px;color:#5DADE2;font-family:var(--font-mono)">(V)</span>' : ''}</td>
+      <td><span class="tier-badge t-${tier}">${tier}</span></td>
+      <td class="td-time">${time}</td>
+      <td class="td-muted">${pace}</td>
+      <td class="td-place">${placeStr}</td>
+      <td>${award ? `<span class="award-badge">${award}</span>` : ''}</td>
+      <td>${sourceDots(r)}</td>
+    </tr>`;
+  }).join('');
+}
+
+function filterTier(tier, btn) {
+  currentFilter = tier;
+  document.querySelectorAll('.tier-btn, .show-all-btn').forEach(b => {
+    b.className = b.classList.contains('show-all-btn') ? 'show-all-btn' : 'tier-btn';
+  });
+  if (tier === 'all') {
+    btn.style.borderColor = 'var(--gold-dim)';
+    btn.style.color = 'var(--gold)';
+  } else if (tier === 'serious') {
+    btn.className = 'tier-btn active-all';
+  } else {
+    btn.className = `tier-btn active-${tier}`;
+  }
+  renderRaceTable(allRaces, tier);
+}
+
+function sortTable(col) {
+  if (sortCol === col) sortDir *= -1;
+  else { sortCol = col; sortDir = 1; }
+  renderRaceTable(allRaces, currentFilter);
+}
+
+function renderBSR(bsrRaces) {
+  // Sort by chip time to find PR
+  const sorted = [...bsrRaces].sort((a,b) =>
+    (getField(a,'Chip Time')||'').localeCompare(getField(b,'Chip Time')||''));
+  const prTime = getField(sorted[0],'Chip Time') || '';
+
+  document.getElementById('bsr-grid').innerHTML = bsrRaces
+    .sort((a,b) => (getField(a,'Date')||'').localeCompare(getField(b,'Date')||''))
+    .map(r => {
+      const time = getField(r,'Chip Time') || '—';
+      const date = getField(r,'Date','_date_str') || '';
+      const year = date.slice(0,4);
+      const isPR = time === prTime && !String(getField(r,'Virtual')||'').toLowerCase().includes('true');
+      const isV  = String(getField(r,'Virtual')||'').toLowerCase().includes('true') ||
+                   String(getField(r,'Virtual')||'') === '✓';
+      const ag   = getField(r,'AG Label') || '';
+      const oa   = getField(r,'OA\nPlace');
+      return `<div class="bsr-card ${isPR ? 'pr-year' : ''}">
+        <div class="bsr-year">${year}${isV ? ' · <span class="bsr-virtual-tag">VIRTUAL</span>' : ''}</div>
+        <div class="bsr-time">${time}</div>
+        <div class="bsr-meta">${ag}${oa ? ' · #' + oa + ' OA' : ''}</div>
+      </div>`;
+    }).join('');
+}
+
+function renderBoston(bostonRaces) {
+  const realRaces = bostonRaces.filter(r =>
+    !String(getField(r,'Virtual')||'').toLowerCase().includes('true') &&
+    String(getField(r,'Virtual')||'') !== '✓');
+  const times = realRaces.map(r => getField(r,'Chip Time')||'9:99');
+  const bestTime = times.sort()[0];
+
+  document.getElementById('boston-cards').innerHTML = bostonRaces
+    .sort((a,b) => (getField(a,'Date')||'').localeCompare(getField(b,'Date')||''))
+    .map(r => {
+      const time = getField(r,'Chip Time') || '—';
+      const date = getField(r,'Date','_date_str') || '';
+      const year = date.slice(0,4);
+      const ed   = r.edition || '—';
+      const isV  = String(getField(r,'Virtual')||'').toLowerCase().includes('true') ||
+                   String(getField(r,'Virtual')||'') === '✓';
+      const isBest = time === bestTime && !isV;
+      const oa   = getField(r,'OA\nPlace');
+      const of_  = getField(r,'OA\nField');
+      const pace = getField(r,'Pace\n/mi') || '—';
+      return `<div class="boston-card ${isV ? 'virtual' : ''} ${isBest ? 'best-boston' : ''}">
+        <div class="boston-edition">${ed}${isBest ? ' · PR' : ''}</div>
+        <div class="boston-time">${time}</div>
+        <div class="boston-year-label">${year}${isV ? ' — Virtual' : ''}</div>
+        <div class="boston-stats">
+          <span>${pace} /mi</span>
+          ${oa && of_ ? `<span>#${oa} of ${of_}</span>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+}
+
+function renderUltras(ultraRaces) {
+  document.getElementById('ultra-list').innerHTML = ultraRaces
+    .sort((a,b) => (getField(a,'Date')||'').localeCompare(getField(b,'Date')||''))
+    .map(r => {
+      const name  = getField(r,'Race Name') || '';
+      const date  = getField(r,'Date','_date_str') || '';
+      const year  = date.slice(0,4);
+      const dist  = getField(r,'Distance') || '';
+      const time  = getField(r,'Chip Time') || '—';
+      const oa    = getField(r,'OA\nPlace');
+      const of_   = getField(r,'OA\nField');
+      const gp    = getField(r,'Gender\nPlace');
+      const award = getField(r,'Award') || '';
+      const placeStr = oa ? (of_ ? `${oa}/${of_} OA` : `#${oa} OA`) : '';
+      const genderStr = gp ? ` · ${gp}M` : '';
+      return `<div class="ultra-row ${award ? 'has-award' : ''}">
+        <div class="ultra-date">${year}</div>
+        <div class="ultra-name">${name}</div>
+        <div class="ultra-dist">${dist}</div>
+        <div class="ultra-time">${time}</div>
+        <div class="ultra-place">
+          ${placeStr}${genderStr}
+          ${award ? `<br><span class="ultra-award">${award}</span>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+}
+
+function renderStrava(years) {
+  const miles = years.map(y => parseFloat(y['Total Miles']) || 0);
+  const maxMiles = Math.max(...miles, 1);
+  const container = document.getElementById('strava-bars');
+  container.innerHTML = years.map((y, i) => {
+    const mi = parseFloat(y['Total Miles']) || 0;
+    const heightPct = (mi / maxMiles) * 100;
+    const yr = y['Year'];
+    return `<div class="strava-bar-group">
+      <div class="strava-bar-value">${Math.round(mi).toLocaleString()}</div>
+      <div class="strava-bar" style="height:${heightPct}%"></div>
+      <div class="strava-bar-year">${yr}</div>
+    </div>`;
+  }).join('');
+}
+
+fetchAll();
+</script>
+</body>
+</html>
