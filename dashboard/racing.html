@@ -7,35 +7,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --gold:#E8B84B;--gold-dim:#9A7A2E;--navy:#0A0E1A;--navy-card:#151C2C;
-  --navy-border:#1E2D4A;--navy-hover:#1C2A40;--white:#F0EDE6;--muted:#8896A8;
-  --font-d:'Bebas Neue',sans-serif;--font-m:'Share Tech Mono',monospace;
-  --font-b:'Inter',sans-serif;
-}
+:root{--gold:#E8B84B;--gold-dim:#9A7A2E;--navy:#0A0E1A;--navy-card:#151C2C;--navy-border:#1E2D4A;--navy-hover:#1C2A40;--white:#F0EDE6;--muted:#8896A8;--font-d:'Bebas Neue',sans-serif;--font-m:'Share Tech Mono',monospace;--font-b:'Inter',sans-serif;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--navy);color:var(--white);font-family:var(--font-b);font-size:14px;line-height:1.6;min-height:100vh;}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(232,184,75,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(232,184,75,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
 .wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 80px;}
-
 .site-header{border-bottom:1px solid var(--navy-border);padding:20px 0 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;}
-.logo{font-family:var(--font-m);font-size:11px;color:var(--gold-dim);letter-spacing:.15em;text-transform:uppercase;}
-.logo span{color:var(--gold);}
+.logo{font-family:var(--font-m);font-size:11px;color:var(--gold-dim);letter-spacing:.15em;text-transform:uppercase;}.logo span{color:var(--gold);}
 .nav-links{display:flex;gap:24px;}
 .nav-links a{font-family:var(--font-m);font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
 .nav-links a:hover,.nav-links a.active{color:var(--gold);}
-
 .page-title-block{margin-bottom:48px;}
 .station-label{font-family:var(--font-m);font-size:11px;color:var(--gold-dim);letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px;}
 .page-title{font-family:var(--font-d);font-size:clamp(48px,8vw,80px);letter-spacing:.04em;color:var(--white);line-height:1;margin-bottom:12px;}
 .page-title span{color:var(--gold);}
 .page-subtitle{font-size:14px;color:var(--muted);max-width:560px;}
-
 .section{margin-bottom:56px;}
 .section-header{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--navy-border);}
 .section-header h2{font-family:var(--font-d);font-size:28px;letter-spacing:.05em;color:var(--white);}
 .section-sub{font-family:var(--font-m);font-size:10px;color:var(--gold-dim);letter-spacing:.15em;text-transform:uppercase;}
-
 .pr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:56px;}
 .pr-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;padding:16px;position:relative;overflow:hidden;transition:border-color .2s;}
 .pr-card:hover{border-color:var(--gold-dim);}
@@ -43,7 +33,6 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .pr-label{font-family:var(--font-m);font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;}
 .pr-value{font-family:var(--font-d);font-size:30px;letter-spacing:.03em;color:var(--gold);line-height:1;margin-bottom:4px;}
 .pr-meta{font-size:11px;color:var(--muted);}
-
 .majors-progress{margin-bottom:20px;background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;padding:16px 20px;display:flex;align-items:center;gap:20px;}
 .progress-label{font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
 .progress-bar-wrap{flex:1;background:var(--navy-border);border-radius:3px;height:6px;overflow:hidden;}
@@ -51,7 +40,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .progress-fraction{font-family:var(--font-d);font-size:24px;color:var(--gold);white-space:nowrap;}
 .majors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 @media(max-width:700px){.majors-grid{grid-template-columns:1fr 1fr;}}
-.major-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;padding:16px;transition:border-color .2s;}
+.major-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;padding:16px;}
 .major-card.done{border-color:var(--gold-dim);}
 .major-card.registered{border-color:#2980B9;}
 .major-card.planned{border-color:#3D4F6B;}
@@ -68,31 +57,27 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .major-times{margin-top:8px;display:flex;flex-direction:column;gap:3px;}
 .major-time-row{font-family:var(--font-m);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;}
 .major-time-row .tv{color:var(--white);}
-
-.tier-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.tier-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
 .tl-item{display:flex;align-items:center;gap:6px;font-family:var(--font-m);font-size:10px;color:var(--muted);}
 .tl-dot{width:8px;height:8px;border-radius:2px;}
-
 .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
 .filter-label{font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-right:4px;}
 .tier-btn{font-family:var(--font-m);font-size:10px;letter-spacing:.08em;padding:5px 12px;border-radius:4px;border:1px solid var(--navy-border);cursor:pointer;transition:all .15s;background:var(--navy-card);color:var(--muted);text-transform:uppercase;}
 .tier-btn:hover{border-color:var(--gold-dim);color:var(--gold);}
 .tier-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(232,184,75,.1);}
-
 .race-table-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--navy-border);}
 table{width:100%;border-collapse:collapse;font-size:13px;}
 thead th{font-family:var(--font-m);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:10px 14px;text-align:left;border-bottom:1px solid var(--navy-border);white-space:nowrap;cursor:pointer;user-select:none;background:var(--navy-card);}
 thead th:hover{color:var(--gold);}
 thead th.sort-asc::after{content:' ↑';color:var(--gold);}
 thead th.sort-desc::after{content:' ↓';color:var(--gold);}
-tbody tr{border-bottom:1px solid rgba(30,45,74,.6);transition:background .1s;cursor:pointer;}
-tbody tr:last-child{border-bottom:none;}
-tbody tr:hover{background:var(--navy-hover);}
-tbody tr.expanded{background:var(--navy-hover);}
+tbody tr.data-row{border-bottom:1px solid rgba(30,45,74,.6);transition:background .1s;cursor:pointer;}
+tbody tr.data-row:hover{background:var(--navy-hover);}
+tbody tr.data-row.expanded{background:var(--navy-hover);}
 tbody td{padding:11px 14px;vertical-align:middle;}
 .td-year{font-family:var(--font-m);font-size:12px;color:var(--muted);}
 .td-name{font-size:13px;font-weight:500;color:var(--white);}
-.td-time{font-family:var(--font-m);font-size:13px;color:var(--gold);font-weight:500;}
+.td-time{font-family:var(--font-m);font-size:13px;color:var(--gold);}
 .td-pace{font-family:var(--font-m);font-size:12px;color:var(--muted);}
 .td-place{font-family:var(--font-m);font-size:12px;color:var(--muted);}
 .tier-badge{display:inline-block;font-family:var(--font-m);font-size:9px;letter-spacing:.1em;padding:2px 7px;border-radius:3px;font-weight:600;}
@@ -104,37 +89,37 @@ tbody td{padding:11px 14px;vertical-align:middle;}
 .t-F{background:rgba(142,68,173,.2);color:#A569BD;border:1px solid rgba(142,68,173,.4);}
 .award-badge{font-family:var(--font-m);font-size:9px;letter-spacing:.08em;padding:2px 7px;border-radius:3px;background:rgba(232,184,75,.12);color:var(--gold);border:1px solid rgba(232,184,75,.3);}
 .source-dots{display:flex;gap:4px;align-items:center;}
-.source-dot{width:7px;height:7px;border-radius:50%;}
-.dot-off{background:var(--muted);}
-.dot-strava{background:#FC4C02;}
-.dot-garmin{background:#3CD37A;}
-.chevron{transition:transform .2s;font-size:10px;color:var(--muted);margin-left:4px;}
+.source-dot{width:7px;height:7px;border-radius:50%;cursor:help;}
+.dot-off{background:var(--muted);}.dot-strava{background:#FC4C02;}.dot-garmin{background:#3CD37A;}
+.chevron{transition:transform .2s;font-size:10px;color:var(--muted);}
 .expanded .chevron{transform:rotate(180deg);}
-
+/* EXPAND PANEL */
 .expand-row{display:none;}
 .expand-row.open{display:table-row;}
-.expand-row td{padding:0 14px 14px;border-bottom:1px solid var(--navy-border);}
-.expand-inner{background:rgba(10,14,26,.7);border-radius:6px;padding:16px;border:1px solid var(--navy-border);}
-.expand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-bottom:12px;}
+.expand-row td{padding:0 14px 16px;border-bottom:1px solid var(--navy-border);}
+.expand-inner{background:rgba(8,12,22,.8);border-radius:6px;border:1px solid var(--navy-border);overflow:hidden;}
+.expand-section{padding:14px 16px;border-bottom:1px solid rgba(30,45,74,.5);}
+.expand-section:last-child{border-bottom:none;}
+.expand-section-title{font-family:var(--font-m);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:10px;}
+.expand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;}
 .exp-stat{display:flex;flex-direction:column;gap:2px;}
-.exp-lbl{font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.exp-lbl{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 .exp-val{font-family:var(--font-m);font-size:13px;color:var(--white);}
-.exp-val.hi{color:var(--gold);}
-.expand-divider{height:1px;background:var(--navy-border);margin:12px 0;}
-.expand-src{display:flex;gap:6px;align-items:center;margin-bottom:10px;}
+.exp-val.gold{color:var(--gold);}
+.exp-val.dim{color:var(--muted);}
+.expand-src{display:flex;gap:6px;align-items:center;}
 .src-badge{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;padding:2px 8px;border-radius:3px;text-transform:uppercase;}
 .src-off{background:rgba(136,150,168,.15);color:var(--muted);border:1px solid rgba(136,150,168,.3);}
 .src-strava{background:rgba(252,76,2,.15);color:#FC4C02;border:1px solid rgba(252,76,2,.3);}
 .src-garmin{background:rgba(60,211,122,.15);color:#3CD37A;border:1px solid rgba(60,211,122,.3);}
-.src-todo{background:rgba(232,184,75,.1);color:var(--gold-dim);border:1px solid rgba(232,184,75,.2);}
-.expand-note{font-size:12px;color:var(--muted);line-height:1.5;}
-.expand-todo{font-family:var(--font-m);font-size:11px;color:var(--gold-dim);letter-spacing:.05em;}
-
-.splits-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;}
-.splits-table th{font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:4px 8px;text-align:left;border-bottom:1px solid var(--navy-border);}
-.splits-table td{font-family:var(--font-m);padding:5px 8px;color:var(--white);border-bottom:1px solid rgba(30,45,74,.4);}
-.splits-table td.hi{color:var(--gold);}
-
+.expand-note{font-size:12px;color:var(--muted);font-style:italic;}
+/* SPLITS TABLE */
+.splits-tbl{width:100%;border-collapse:collapse;font-size:12px;margin-top:2px;}
+.splits-tbl th{font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:5px 10px;text-align:left;border-bottom:1px solid rgba(30,45,74,.5);}
+.splits-tbl td{font-family:var(--font-m);padding:6px 10px;color:var(--white);border-bottom:1px solid rgba(30,45,74,.3);}
+.splits-tbl tr:last-child td{border-bottom:none;}
+.splits-tbl td.sp-hi{color:var(--gold);}
+/* BSR */
 .bsr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
 .bsr-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:6px;padding:12px;position:relative;transition:border-color .2s;}
 .bsr-card:hover{border-color:var(--gold-dim);}
@@ -145,7 +130,7 @@ tbody td{padding:11px 14px;vertical-align:middle;}
 .bsr-card.bsr-pr .bsr-time{color:var(--gold);}
 .bsr-meta{font-size:11px;color:var(--muted);}
 .bsr-vtag{font-family:var(--font-m);font-size:9px;color:#5DADE2;}
-
+/* BOSTON */
 .boston-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
 .bos-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;padding:16px;transition:border-color .2s;}
 .bos-card:hover{border-color:var(--gold-dim);}
@@ -156,9 +141,9 @@ tbody td{padding:11px 14px;vertical-align:middle;}
 .bos-card.bos-pr .bos-time{color:var(--gold);}
 .bos-year{font-family:var(--font-m);font-size:10px;color:var(--muted);margin-bottom:8px;}
 .bos-stats{display:flex;gap:12px;font-family:var(--font-m);font-size:10px;color:var(--muted);border-top:1px solid var(--navy-border);padding-top:8px;margin-top:8px;}
-
+/* ULTRAS */
 .ultra-list{display:flex;flex-direction:column;gap:8px;}
-.ultra-row{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:90px 1fr 90px 120px 160px;gap:12px;align-items:center;transition:filter .2s;}
+.ultra-row{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:90px 1fr 90px 130px 160px;gap:12px;align-items:center;transition:filter .2s;}
 .ultra-row:hover{filter:brightness(1.06);}
 .ultra-row.has-award{border-left:3px solid var(--gold);}
 .ultra-date{font-family:var(--font-m);font-size:11px;color:var(--muted);}
@@ -168,28 +153,31 @@ tbody td{padding:11px 14px;vertical-align:middle;}
 .ultra-right{display:flex;flex-direction:column;gap:4px;align-items:flex-end;}
 .ultra-place{font-family:var(--font-m);font-size:11px;color:var(--muted);}
 .ultra-award{font-family:var(--font-m);font-size:9px;color:var(--gold);background:rgba(232,184,75,.1);border:1px solid rgba(232,184,75,.25);padding:2px 7px;border-radius:3px;letter-spacing:.08em;}
-
-/* STRAVA / SMASHRUN */
-.strava-year-cards{display:flex;flex-direction:column;gap:16px;}
-.strava-year-block{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;overflow:hidden;}
-.strava-year-hdr{display:flex;align-items:center;gap:16px;padding:12px 16px;border-bottom:1px solid var(--navy-border);cursor:pointer;}
-.strava-year-hdr:hover{background:var(--navy-hover);}
-.strava-yr-label{font-family:var(--font-d);font-size:24px;color:var(--gold);letter-spacing:.04em;min-width:60px;}
-.strava-yr-miles{font-family:var(--font-m);font-size:14px;color:var(--white);}
-.strava-yr-sub{font-family:var(--font-m);font-size:11px;color:var(--muted);}
-.strava-yr-chevron{margin-left:auto;font-size:10px;color:var(--muted);transition:transform .2s;}
-.strava-yr-body{display:none;padding:16px;}
-.strava-yr-body.open{display:block;}
-.strava-yr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;}
-.strava-stat{display:flex;flex-direction:column;gap:2px;}
-.strava-stat-lbl{font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
-.strava-stat-val{font-family:var(--font-m);font-size:14px;color:var(--white);}
-
+/* ANNUAL TRAINING - dual source */
+.annual-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
+.annual-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:8px;overflow:hidden;}
+.annual-card-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--navy-border);cursor:pointer;}
+.annual-card-hdr:hover{background:var(--navy-hover);}
+.annual-yr{font-family:var(--font-d);font-size:28px;color:var(--gold);letter-spacing:.04em;}
+.annual-miles{font-family:var(--font-m);font-size:13px;color:var(--white);}
+.annual-pace{font-family:var(--font-m);font-size:11px;color:var(--muted);}
+.annual-chev{font-size:10px;color:var(--muted);transition:transform .2s;}
+.annual-body{display:none;padding:14px 16px;}
+.annual-body.open{display:block;}
+.annual-sources{display:flex;gap:8px;margin-bottom:12px;}
+.src-tab{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;padding:3px 10px;border-radius:3px;text-transform:uppercase;border:1px solid var(--navy-border);color:var(--muted);cursor:pointer;}
+.src-tab.active-strava{background:rgba(252,76,2,.15);color:#FC4C02;border-color:rgba(252,76,2,.3);}
+.src-tab.active-smash{background:rgba(41,128,185,.15);color:#5DADE2;border-color:rgba(41,128,185,.3);}
+.annual-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ann-stat{display:flex;flex-direction:column;gap:1px;}
+.ann-lbl{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.ann-val{font-family:var(--font-m);font-size:12px;color:var(--white);}
+.ann-val.todo{color:var(--gold-dim);font-style:italic;}
+/* LOADING */
 .loading-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;}
 .dharma-spinner{width:56px;height:56px;border:2px solid var(--navy-border);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-text{font-family:var(--font-m);font-size:11px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;}
-
 .page-footer{border-top:1px solid var(--navy-border);padding:20px 0;display:flex;justify-content:space-between;align-items:center;margin-top:48px;}
 .footer-text{font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.1em;}
 .footer-text span{color:var(--gold-dim);}
@@ -199,7 +187,6 @@ tbody td{padding:11px 14px;vertical-align:middle;}
 </head>
 <body>
 <div class="wrap">
-
 <header class="site-header">
   <div class="logo">DHARMA Initiative // <span>Aup808</span></div>
   <nav class="nav-links">
@@ -209,27 +196,19 @@ tbody td{padding:11px 14px;vertical-align:middle;}
     <a href="austin.html">Austin</a>
   </nav>
 </header>
-
 <div id="loading" class="loading-screen">
   <div class="dharma-spinner"></div>
   <div class="loading-text">Fetching race records...</div>
 </div>
-
 <div id="main" style="display:none">
-
   <div class="page-title-block fade-in">
-    <div class="station-label" id="station-label">Station X — Aup808</div>
+    <div class="station-label">Station X — Aup808</div>
     <h1 class="page-title">Race <span>Records</span></h1>
     <p class="page-subtitle" id="subtitle"></p>
   </div>
-
   <div class="pr-grid fade-in" id="pr-grid"></div>
-
   <div class="section fade-in">
-    <div class="section-header">
-      <h2>Abbott World Marathon Majors</h2>
-      <span class="section-sub">Six Majors Challenge</span>
-    </div>
+    <div class="section-header"><h2>Abbott World Marathon Majors</h2><span class="section-sub">Six Majors Challenge</span></div>
     <div class="majors-progress">
       <span class="progress-label">Progress toward Six Star</span>
       <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:16.66%"></div></div>
@@ -237,12 +216,8 @@ tbody td{padding:11px 14px;vertical-align:middle;}
     </div>
     <div class="majors-grid" id="majors-grid"></div>
   </div>
-
   <div class="section fade-in">
-    <div class="section-header">
-      <h2>All Races</h2>
-      <span class="section-sub" id="race-count-label">—</span>
-    </div>
+    <div class="section-header"><h2>All Races</h2><span class="section-sub" id="race-count-label">—</span></div>
     <div class="tier-legend">
       <span class="tl-item"><span class="tl-dot" style="background:#C0392B"></span>A — Ultra</span>
       <span class="tl-item"><span class="tl-dot" style="background:#E67E22"></span>B — Marathon</span>
@@ -253,74 +228,53 @@ tbody td{padding:11px 14px;vertical-align:middle;}
     </div>
     <div class="filter-bar">
       <span class="filter-label">Filter:</span>
-      <button class="tier-btn active" data-f="all" onclick="setFilter('all',this)">All</button>
-      <button class="tier-btn" data-f="A" onclick="setFilter('A',this)">A — Ultra</button>
-      <button class="tier-btn" data-f="B" onclick="setFilter('B',this)">B — Marathon</button>
-      <button class="tier-btn" data-f="C" onclick="setFilter('C',this)">C — Half</button>
-      <button class="tier-btn" data-f="D" onclick="setFilter('D',this)">D — Road</button>
-      <button class="tier-btn" data-f="E" onclick="setFilter('E',this)">E — Charity</button>
-      <button class="tier-btn" data-f="F" onclick="setFilter('F',this)">F — Challenge</button>
+      <button class="tier-btn active" onclick="setFilter('all',this)">All</button>
+      <button class="tier-btn" onclick="setFilter('A',this)">A — Ultra</button>
+      <button class="tier-btn" onclick="setFilter('B',this)">B — Marathon</button>
+      <button class="tier-btn" onclick="setFilter('C',this)">C — Half</button>
+      <button class="tier-btn" onclick="setFilter('D',this)">D — Road</button>
+      <button class="tier-btn" onclick="setFilter('E',this)">E — Charity</button>
+      <button class="tier-btn" onclick="setFilter('F',this)">F — Challenge</button>
     </div>
     <div class="race-table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th onclick="doSort('date')" id="th-date">Year</th>
-            <th onclick="doSort('name')" id="th-name">Race</th>
-            <th>Tier</th>
-            <th onclick="doSort('time')" id="th-time">Chip Time</th>
-            <th>Pace</th>
-            <th>Overall</th>
-            <th>Award</th>
-            <th>Data</th>
-            <th></th>
-          </tr>
-        </thead>
+        <thead><tr>
+          <th onclick="doSort('date')" id="th-date">Year</th>
+          <th onclick="doSort('name')" id="th-name">Race</th>
+          <th>Tier</th>
+          <th onclick="doSort('time')" id="th-time">Chip Time</th>
+          <th>Pace</th>
+          <th>Overall</th>
+          <th>Award</th>
+          <th>Data</th>
+          <th></th>
+        </tr></thead>
         <tbody id="race-tbody"></tbody>
       </table>
     </div>
   </div>
-
   <div class="section fade-in">
-    <div class="section-header">
-      <h2>Broad Street Run History</h2>
-      <span class="section-sub">10 Miles · Philadelphia · 2016–2026</span>
-    </div>
+    <div class="section-header"><h2>Broad Street Run History</h2><span class="section-sub">10 Miles · Philadelphia · 2016–2026</span></div>
     <div class="bsr-grid" id="bsr-grid"></div>
   </div>
-
   <div class="section fade-in">
-    <div class="section-header">
-      <h2>Boston Marathon</h2>
-      <span class="section-sub">Abbott Major #1 · 125th · 127th · 129th · 130th</span>
-    </div>
+    <div class="section-header"><h2>Boston Marathon History</h2><span class="section-sub">125th · 127th · 129th · 130th</span></div>
     <div class="boston-cards" id="boston-cards"></div>
   </div>
-
   <div class="section fade-in">
-    <div class="section-header">
-      <h2>Ultra History</h2>
-      <span class="section-sub">Tier A — Solo · No crew · No pacers</span>
-    </div>
+    <div class="section-header"><h2>Ultra History</h2><span class="section-sub">Tier A — Major Ultras</span></div>
     <div class="ultra-list" id="ultra-list"></div>
   </div>
-
   <div class="section fade-in">
-    <div class="section-header">
-      <h2>Annual Training</h2>
-      <span class="section-sub">SmashRun Year in Review · 2021–2025</span>
-    </div>
-    <div class="strava-year-cards" id="strava-years"></div>
+    <div class="section-header"><h2>Annual Training</h2><span class="section-sub">Strava + SmashRun · 2021–2025</span></div>
+    <div class="annual-grid" id="annual-grid"></div>
   </div>
-
 </div>
-
 <footer class="page-footer">
   <div class="footer-text">DHARMA Initiative // Aup808 // <span id="footer-ts">—</span></div>
   <div class="footer-text">Source: <span>AJDar808/aup-dashboard</span></div>
 </footer>
 </div>
-
 <script>
 const BASE='https://raw.githubusercontent.com/AJDar808/aup-dashboard/main/racing/';
 let ALL=[];
@@ -339,16 +293,55 @@ const MAJORS=[
   {name:'Berlin',status:'remaining',detail:'Remaining'},
 ];
 
-const SMASHRUN=[
-  {year:2021,miles:2316,pace:'7:07',avg_len:8.7,days_wk:5.1,longest:26.4,streak:18,streak_dates:'Jan 5–Jan 22',most_day:'Tuesday',pct_pm:85,hours:274,elev:28990},
-  {year:2022,miles:2541,pace:'7:38',avg_len:9.9,days_wk:4.9,longest:100.2,streak:13,streak_dates:'Jul 8–Jul 20',most_day:'Sunday',pct_pm:75,hours:null,elev:null},
-  {year:2023,miles:2412,pace:'7:45',avg_len:9.8,days_wk:4.7,longest:100.0,streak:25,streak_dates:'Jan 1–Jan 25',most_day:'Tuesday',pct_pm:51,hours:309.75,elev:42450},
-  {year:2024,miles:2582,pace:'8:09',avg_len:10.3,days_wk:4.8,longest:101.0,streak:32,streak_dates:'May 28–Jun 28',most_day:'Tuesday',pct_pm:45,hours:350.18,elev:43034},
-  {year:2025,miles:2201,pace:'7:55',avg_len:8.9,days_wk:4.6,longest:50.0,streak:13,streak_dates:'Oct 2–Oct 14',most_day:'Monday',pct_pm:54,hours:323.5,elev:39179},
+// Full Garmin data embedded — no extra fetch needed
+const GARMIN={
+  '2016-11-19':{dist:'26.47',time:'3:11:36',avg_pace:'7:14',cadence:'167',elev_gain:'604',elev_loss:'591',calories:'3937',stride:'1.33'},
+  '2017-03-11':{dist:'26.4',time:'3:12:36',avg_pace:'7:18',cadence:'168',elev_gain:'764',elev_loss:'732',calories:'3920',stride:'1.32'},
+  '2017-10-21':{dist:'26.41',time:'3:10:27',avg_pace:'7:13',cadence:'169',elev_gain:'945',elev_loss:'968',calories:'3929',stride:'1.32'},
+  '2018-11-18':{dist:'26.3',time:'2:54:19',avg_pace:'6:38',cadence:'175',elev_gain:'574',elev_loss:'554',calories:'3894',stride:'1.39'},
+  '2019-04-20':{dist:'31.38',time:'3:57:00',avg_pace:'7:33',cadence:'169',elev_gain:'535',elev_loss:'535',calories:'4681',stride:'1.26'},
+  '2020-08-22':{dist:'98.26',time:'20:43:32',moving_time:'20:41:11',avg_pace:'12:39',avg_hr:'137',max_hr:'180',cadence:'143',elev_gain:'7874',elev_loss:'7874',min_temp:'62.6',max_temp:'98.6',calories:'12650',stride:'0.89',note:'GPS incomplete — 98.26mi recorded. Official: 22:49:55 / 100mi.'},
+  '2020-09-14':{dist:'26.25',time:'5:40:49',moving_time:'5:40:44',avg_pace:'12:59',avg_hr:'133',max_hr:'186',cadence:'133',elev_gain:'374',elev_loss:'302',min_temp:'78.8',max_temp:'89.6',calories:'3176',stride:'0.93'},
+  '2021-10-11':{dist:'26.35',time:'2:58:14',moving_time:'2:58:13',avg_pace:'6:46',avg_hr:'171',max_hr:'185',cadence:'176',elev_gain:'820',elev_loss:'1276',min_temp:'68',max_temp:'80.6',calories:'3207',stride:'1.35'},
+  '2021-11-20':{dist:'26.2',time:'2:54:16',moving_time:'2:54:11',avg_pace:'6:39',avg_hr:'173',max_hr:'192',cadence:'175',elev_gain:'663',elev_loss:'656',min_temp:'51.8',max_temp:'66.2',calories:'3246',stride:'1.38'},
+  '2022-04-02':{dist:'100.18',time:'21:10:50',moving_time:'21:09:33',avg_pace:'12:41',avg_hr:'134',max_hr:'181',cadence:'136',elev_gain:'8537',elev_loss:'8205',min_temp:'48.2',max_temp:'82.4',calories:'11320',stride:'0.93'},
+  '2022-11-19':{dist:'26.32',time:'3:13:28',moving_time:'3:13:28',avg_pace:'7:21',avg_hr:'157',max_hr:'175',cadence:'172',elev_gain:'804',elev_loss:'869',min_temp:'41',max_temp:'50',calories:'2480',stride:'1.27'},
+  '2023-02-04':{dist:'100.02',time:'23:29:54',moving_time:'21:51:45',avg_pace:'14:06',avg_hr:'132',max_hr:'179',cadence:'127',elev_gain:'6633',elev_loss:'6615',min_temp:'42.8',max_temp:'86',calories:'12982',stride:'0.9'},
+  '2023-04-17':{dist:'26.41',time:'2:57:26',moving_time:'2:57:22',avg_pace:'6:43',avg_hr:'171',max_hr:'182',cadence:'170',elev_gain:'875',elev_loss:'1303',min_temp:'57.2',max_temp:'71.6',calories:'3071',stride:'1.41'},
+  '2023-11-18':{dist:'26.41',time:'2:53:42',moving_time:'2:53:38',avg_pace:'6:35',avg_hr:'172',max_hr:'209',cadence:'173',elev_gain:'723',elev_loss:'685',min_temp:'53.6',max_temp:'69.8',calories:'3011',stride:'1.41'},
+  '2024-01-13':{dist:'100.69',time:'21:13:25',moving_time:'20:21:32',avg_pace:'12:39',avg_hr:'134',max_hr:'170',cadence:'131',elev_gain:'733',elev_loss:'712',min_temp:'53.6',max_temp:'80.6',calories:'12737',stride:'0.93'},
+  '2024-11-23':{dist:'26.5',time:'3:13:57',moving_time:'3:13:38',avg_pace:'7:19',avg_hr:'159',max_hr:'179',cadence:'171',elev_gain:'704',elev_loss:'666',min_temp:'55.4',max_temp:'64.4',calories:'3124',stride:'1.29'},
+  '2024-12-07':{dist:'101.01',time:'21:10:45',moving_time:'19:46:06',avg_pace:'12:35',avg_hr:'132',max_hr:'174',cadence:'135',elev_gain:'946',elev_loss:'938',min_temp:'50',max_temp:'75.2',calories:'12854',stride:'0.93'},
+  '2025-04-21':{dist:'26.4',time:'2:54:13',moving_time:'2:54:07',avg_pace:'6:36',avg_hr:'173',max_hr:'182',cadence:'174',elev_gain:'876',elev_loss:'1302',min_temp:'64.4',max_temp:'82.4',calories:'3304',stride:'1.4'},
+  '2025-05-10':{dist:'50.03',time:'8:05:49',moving_time:'8:04:20',avg_pace:'9:43',avg_hr:'154',max_hr:'176',cadence:'157',elev_gain:'3901',elev_loss:'3888',min_temp:'60.8',max_temp:'87.8',calories:'6736',stride:'1.04'},
+  '2025-11-22':{dist:'26.51',time:'3:07:07',moving_time:'3:07:00',avg_pace:'7:04',avg_hr:'168',max_hr:'181',cadence:'172',elev_gain:'717',elev_loss:'682',min_temp:'51.8',max_temp:'64.4',calories:'3135',stride:'1.32'},
+  '2026-04-20':{dist:'26.4',time:'2:56:02',moving_time:'2:55:57',avg_pace:'6:40',avg_hr:'172',max_hr:'183',cadence:'174',elev_gain:'886',elev_loss:'1335',min_temp:'57.2',max_temp:'75.2',calories:'3032',stride:'1.38'},
+  '2026-04-25':{dist:'100.77',time:'22:45:55',moving_time:'21:01:34',avg_pace:'13:33',avg_hr:'123',max_hr:'173',cadence:'128',elev_gain:'1503',elev_loss:'1490',min_temp:'51.8',max_temp:'78.8',calories:'11996',stride:'0.9'},
+  '2022-06-04':{dist:'3.18',time:'0:20:17',avg_pace:'6:23',avg_hr:'169',max_hr:'200',cadence:'175',elev_gain:'39',elev_loss:'36',stride:'1.44'},
+};
+
+// BSR splits
+const BSR_SPLITS={
+  '2017-05-07':{s3:'20:45',s5:'34:35',s7:'48:34',finish:'1:08:47'},
+  '2026-05-04':{s3:'20:20',s5:'33:48',s7:'47:29',finish:'1:07:31'},
+};
+
+const ANNUAL=[
+  {year:2021,miles:2316,pace:'7:07',avg_len:8.7,days_wk:5.1,longest:'26.4mi (Oct 11)',streak:'18d (Jan 5–Jan 22)',most_day:'Tuesday',pct_pm:85,
+   strava_hours:274,strava_elev:28990},
+  {year:2022,miles:2541,pace:'7:38',avg_len:9.9,days_wk:4.9,longest:'100.2mi (Apr 2)',streak:'13d (Jul 8–Jul 20)',most_day:'Sunday',pct_pm:75,
+   strava_hours:null,strava_elev:null},
+  {year:2023,miles:2412,pace:'7:45',avg_len:9.8,days_wk:4.7,longest:'100.0mi (Feb 4)',streak:'25d (Jan 1–Jan 25)',most_day:'Tuesday',pct_pm:51,
+   strava_hours:309.75,strava_elev:42450},
+  {year:2024,miles:2582,pace:'8:09',avg_len:10.3,days_wk:4.8,longest:'101.0mi (Dec 7)',streak:'32d (May 28–Jun 28)',most_day:'Tuesday',pct_pm:45,
+   strava_hours:350.18,strava_elev:43034},
+  {year:2025,miles:2201,pace:'7:55',avg_len:8.9,days_wk:4.6,longest:'50.0mi (May 10)',streak:'13d (Oct 2–Oct 14)',most_day:'Monday',pct_pm:54,
+   strava_hours:323.5,strava_elev:39179},
 ];
 
 function gf(r,...ks){for(const k of ks){const v=r[k];if(v!==null&&v!==undefined&&v!=='')return v;}return null;}
 function isV(r){return String(gf(r,'Virtual')||'').toLowerCase().includes('true')||String(gf(r,'Virtual')||'')==='✓';}
+function fv(v,suffix=''){return(v&&v!=='null'&&v!=='None')?v+suffix:'—';}
 
 async function init(){
   try{
@@ -362,38 +355,26 @@ async function init(){
     ALL=rr.races||[];
     document.getElementById('loading').style.display='none';
     document.getElementById('main').style.display='block';
-    const ts=new Date(mt.generated_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
     document.getElementById('subtitle').textContent=`${mt.race_count} races · 2012–2026 · Marathons, ultras, road races, and everything in between.`;
-    document.getElementById('footer-ts').textContent='Generated '+ts;
-    renderPRs(mt);
-    renderMajors();
-    renderTable(ALL,'all');
-    renderBSR(br.races||[]);
-    renderBoston(bos.races||[]);
-    renderUltras(ul.races||[]);
-    renderSmashrun();
+    document.getElementById('footer-ts').textContent='Generated '+new Date(mt.generated_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    renderPRs(mt);renderMajors();renderTable(ALL,'all');
+    renderBSR(br.races||[]);renderBoston(bos.races||[]);renderUltras(ul.races||[]);renderAnnual();
   }catch(e){
-    document.getElementById('loading').innerHTML=
-      '<div style="font-family:var(--font-m);color:#E74C3C;font-size:12px;text-align:center">Failed to load data.<br><span style="color:var(--muted)">'+e.message+'</span></div>';
+    document.getElementById('loading').innerHTML='<div style="font-family:var(--font-m);color:#E74C3C;font-size:12px;text-align:center">Failed to load data.<br><span style="color:var(--muted)">'+e.message+'</span></div>';
   }
 }
 
 function renderPRs(mt){
   const p=mt.pr||{};
-  const cards=[
-    {label:'Marathon PR',val:'2:53:35',meta:'Philly 2023'},
-    {label:'Boston PR',val:p.marathon_boston||'2:54:10',meta:'129th · 2025'},
-    {label:'Half Marathon PR',val:p.half_marathon||'1:28:16',meta:'Philly 2022'},
-    {label:'BSR PR · 10 Mile',val:p['10_mile_bsr']||'1:06:54',meta:'BSR 2024'},
-    {label:'100 Mile PR',val:p['100_mile']||'21:08:43',meta:'Brazos Bend 2024'},
-    {label:'Total Races',val:String(mt.race_count||53),meta:'2012 – 2026'},
-  ];
-  document.getElementById('pr-grid').innerHTML=cards.map(c=>`
-    <div class="pr-card">
-      <div class="pr-label">${c.label}</div>
-      <div class="pr-value">${c.val}</div>
-      <div class="pr-meta">${c.meta}</div>
-    </div>`).join('');
+  [{label:'Marathon PR',val:'2:53:35',meta:'Philadelphia 2023'},
+   {label:'Boston PR',val:'2:54:10',meta:'129th Boston · 2025'},
+   {label:'Half Marathon PR',val:'1:28:16',meta:'Philadelphia 2022'},
+   {label:'BSR PR · 10 Mile',val:'1:06:54',meta:'Broad Street Run 2024'},
+   {label:'100 Mile PR',val:'21:08:43',meta:'Brazos Bend 100 · 2024'},
+   {label:'Total Races',val:String(mt.race_count||53),meta:'2012 – 2026'},
+  ].forEach(c=>{
+    document.getElementById('pr-grid').innerHTML+=`<div class="pr-card"><div class="pr-label">${c.label}</div><div class="pr-value">${c.val}</div><div class="pr-meta">${c.meta}</div></div>`;
+  });
 }
 
 function renderMajors(){
@@ -409,7 +390,7 @@ function renderMajors(){
 
 function doSort(col){
   document.querySelectorAll('thead th').forEach(t=>t.className='');
-  if(sortCol===col)sortDir*=-1; else{sortCol=col;sortDir=1;}
+  if(sortCol===col)sortDir*=-1;else{sortCol=col;sortDir=1;}
   const ids={date:'th-date',name:'th-name',time:'th-time'};
   const th=document.getElementById(ids[col]);
   if(th)th.className=sortDir===1?'sort-asc':'sort-desc';
@@ -440,55 +421,91 @@ function toggleExpand(id){
   openId=wasOpen?null:id;
 }
 
-function buildExpandPanel(r){
+function buildExpand(r){
+  const date=gf(r,'Date','_date_str')||'';
   const tier=String(gf(r,'Tier')||'').trim();
-  const oa=gf(r,'OA\nPlace');
-  const of_=gf(r,'OA\nField');
-  const gp=gf(r,'Gender\nPlace');
-  const gf_=gf(r,'Gender\nField');
-  const ag=gf(r,'AG\nPlace');
-  const agf=gf(r,'AG\nField');
+  const oa=gf(r,'OA\nPlace'),of_=gf(r,'OA\nField');
+  const gp=gf(r,'Gender\nPlace'),gf2=gf(r,'Gender\nField');
+  const ag=gf(r,'AG\nPlace'),agf=gf(r,'AG\nField');
   const agl=gf(r,'AG Label')||'';
   const bib=gf(r,'BIB')||'—';
-  const ghr=gf(r,'Garmin HR');
-  const gelev=gf(r,'Garmin Elev\n(ft)');
-  const note=gf(r,'Notes')||'';
+  const gunTime=gf(r,'Gun Time')||null;
   const badges=r.data_badges||['OFFICIAL'];
+  const note=gf(r,'Notes')||'';
+  const g=GARMIN[date]||null;
+  const sp=BSR_SPLITS[date]||null;
 
-  // Placement stats
-  const stats=[
+  // Source badges
+  const srcHTML=`<div class="expand-section">
+    <div class="expand-section-title">Data Sources</div>
+    <div class="expand-src">
+      <span class="src-badge src-off">Official</span>
+      ${badges.includes('STRAVA')?'<span class="src-badge src-strava">Strava</span>':''}
+      ${badges.includes('GARMIN')?'<span class="src-badge src-garmin">Garmin Connect</span>':''}
+    </div>
+  </div>`;
+
+  // Official results
+  const officialStats=[
     {lbl:'Overall',val:oa&&of_?`${oa} / ${of_}`:oa?`#${oa}`:'—'},
-    {lbl:'Gender',val:gp&&gf_?`${gp} / ${gf_}`:gp?`#${gp}`:'—'},
+    {lbl:'Gender',val:gp&&gf2?`${gp} / ${gf2}`:gp?`#${gp}`:'—'},
     {lbl:'Age Group',val:ag&&agf?`${ag} / ${agf}`:ag?`#${ag}`:'—'},
     {lbl:'AG Division',val:agl||'—'},
     {lbl:'BIB',val:String(bib)},
+    ...(gunTime?[{lbl:'Gun Time',val:gunTime}]:[]),
   ];
-  if(ghr)stats.push({lbl:'Avg HR (Garmin)',val:ghr+' bpm',hi:true});
-  if(gelev)stats.push({lbl:'Elevation (Garmin)',val:Number(gelev).toLocaleString()+' ft',hi:true});
-
-  // Source badges
-  const srcHTML=`<div class="expand-src">
-    <span class="src-badge src-off">Official</span>
-    ${badges.includes('STRAVA')?'<span class="src-badge src-strava">Strava</span>':''}
-    ${badges.includes('GARMIN')?'<span class="src-badge src-garmin">Garmin</span>':''}
+  const officialHTML=`<div class="expand-section">
+    <div class="expand-section-title">Official Results</div>
+    <div class="expand-grid">${officialStats.map(s=>`<div class="exp-stat"><div class="exp-lbl">${s.lbl}</div><div class="exp-val">${s.val}</div></div>`).join('')}</div>
   </div>`;
 
-  const statsHTML=`<div class="expand-grid">${stats.map(s=>`
-    <div class="exp-stat">
-      <div class="exp-lbl">${s.lbl}</div>
-      <div class="exp-val ${s.hi?'hi':''}">${s.val}</div>
-    </div>`).join('')}
-  </div>`;
-
-  // Note or TODO
-  let noteHTML='';
-  if(note&&note!=='nan'&&note!=='None'){
-    const isTodo=note.startsWith('TODO:');
-    noteHTML=`<div class="expand-divider"></div>
-      <div class="${isTodo?'expand-todo':'expand-note'}">${note}</div>`;
+  // Garmin section
+  let garminHTML='';
+  if(g){
+    const gStats=[
+      {lbl:'GPS Distance',val:fv(g.dist,' mi')},
+      {lbl:'Avg HR',val:g.avg_hr?g.avg_hr+' bpm':'—',gold:true},
+      {lbl:'Max HR',val:g.max_hr?g.max_hr+' bpm':'—'},
+      {lbl:'Avg Cadence',val:g.cadence?g.cadence+' spm':'—'},
+      {lbl:'Elev Gain',val:g.elev_gain?Number(g.elev_gain).toLocaleString()+' ft':'—',gold:true},
+      {lbl:'Elev Loss',val:g.elev_loss?Number(g.elev_loss).toLocaleString()+' ft':'—'},
+      ...(g.moving_time&&g.moving_time!=='--:--:--'?[{lbl:'Moving Time',val:g.moving_time}]:[]),
+      {lbl:'Calories',val:g.calories?Number(g.calories).toLocaleString():'—'},
+      {lbl:'Avg Stride',val:g.stride?g.stride+' m':'—'},
+      ...(g.min_temp?[{lbl:'Temperature',val:`${g.min_temp}–${g.max_temp}°F`}]:[]),
+    ];
+    const gNote=g.note?`<div style="margin-top:8px;"><span class="expand-note">${g.note}</span></div>`:'';
+    garminHTML=`<div class="expand-section">
+      <div class="expand-section-title">Garmin Connect</div>
+      <div class="expand-grid">${gStats.map(s=>`<div class="exp-stat"><div class="exp-lbl">${s.lbl}</div><div class="exp-val ${s.gold?'gold':''}">${s.val}</div></div>`).join('')}</div>
+      ${gNote}
+    </div>`;
   }
 
-  return `<div class="expand-inner">${srcHTML}${statsHTML}${noteHTML}</div>`;
+  // Splits section (BSR)
+  let splitsHTML='';
+  if(sp){
+    splitsHTML=`<div class="expand-section">
+      <div class="expand-section-title">Race Splits</div>
+      <table class="splits-tbl">
+        <thead><tr><th>Checkpoint</th><th>Net Time</th><th>Split Pace</th></tr></thead>
+        <tbody>
+          <tr><td>3 Mile</td><td>${sp.s3}</td><td>—</td></tr>
+          <tr><td>5 Mile</td><td>${sp.s5}</td><td>—</td></tr>
+          <tr><td>7 Mile</td><td>${sp.s7}</td><td>—</td></tr>
+          <tr><td class="sp-hi">Finish</td><td class="sp-hi">${sp.finish}</td><td class="sp-hi">—</td></tr>
+        </tbody>
+      </table>
+    </div>`;
+  }
+
+  // Notes
+  let noteHTML='';
+  if(note&&note!=='nan'&&note!=='None'&&note.trim()){
+    noteHTML=`<div class="expand-section"><span class="expand-note">${note}</span></div>`;
+  }
+
+  return`<div class="expand-inner">${srcHTML}${officialHTML}${garminHTML}${splitsHTML}${noteHTML}</div>`;
 }
 
 function renderTable(races,f){
@@ -499,32 +516,26 @@ function renderTable(races,f){
     if(sortCol==='time')return sortDir*(gf(a,'Chip Time')||'').localeCompare(gf(b,'Chip Time')||'');
     return 0;
   });
-  document.getElementById('race-count-label').textContent=
-    `${filtered.length} race${filtered.length!==1?'s':''} · click any row to expand details`;
-
+  document.getElementById('race-count-label').textContent=`${filtered.length} race${filtered.length!==1?'s':''} · click any row to expand`;
   document.getElementById('race-tbody').innerHTML=sorted.map((r,i)=>{
     const id='r'+i;
     const tier=String(gf(r,'Tier')||'?').trim();
     const date=gf(r,'Date','_date_str')||'';
-    const year=date.slice(0,4);
     const name=gf(r,'Race Name')||'';
     const time=gf(r,'Chip Time')||'—';
     const pace=gf(r,'Pace\n/mi')||'—';
-    const oa=gf(r,'OA\nPlace');
-    const of_=gf(r,'OA\nField');
+    const oa=gf(r,'OA\nPlace'),of_=gf(r,'OA\nField');
     const award=gf(r,'Award')||'';
     const virt=isV(r);
     const badges=r.data_badges||['OFFICIAL'];
     const placeStr=oa?(of_?`${oa} / ${of_}`:String(oa)):'—';
-
     const dots=`<div class="source-dots">
-      <div class="source-dot dot-off" title="Official"></div>
-      ${badges.includes('STRAVA')?'<div class="source-dot dot-strava" title="Strava"></div>':''}
-      ${badges.includes('GARMIN')?'<div class="source-dot dot-garmin" title="Garmin"></div>':''}
+      <div class="source-dot dot-off" title="Official results"></div>
+      ${badges.includes('STRAVA')?'<div class="source-dot dot-strava" title="Strava activity"></div>':''}
+      ${badges.includes('GARMIN')?'<div class="source-dot dot-garmin" title="Garmin Connect"></div>':''}
     </div>`;
-
-    return `<tr id="tr-${id}" onclick="toggleExpand('${id}')">
-      <td class="td-year">${year}</td>
+    return`<tr class="data-row" id="tr-${id}" onclick="toggleExpand('${id}')">
+      <td class="td-year">${date.slice(0,4)}</td>
       <td class="td-name">${name}${virt?' <span style="font-size:10px;color:#5DADE2;font-family:var(--font-m)">(V)</span>':''}</td>
       <td><span class="tier-badge t-${tier}">${tier}</span></td>
       <td class="td-time">${time}</td>
@@ -534,9 +545,7 @@ function renderTable(races,f){
       <td>${dots}</td>
       <td><span class="chevron">▼</span></td>
     </tr>
-    <tr class="expand-row" id="exp-${id}">
-      <td colspan="9">${buildExpandPanel(r)}</td>
-    </tr>`;
+    <tr class="expand-row" id="exp-${id}"><td colspan="9">${buildExpand(r)}</td></tr>`;
   }).join('');
 }
 
@@ -548,13 +557,12 @@ function renderBSR(races){
     .map(r=>{
       const time=gf(r,'Chip Time')||'—';
       const date=gf(r,'Date','_date_str')||'';
-      const year=date.slice(0,4);
       const virt=isV(r);
       const isPR=time===prTime&&!virt;
       const ag=gf(r,'AG Label')||'';
       const oa=gf(r,'OA\nPlace');
-      return `<div class="bsr-card ${isPR?'bsr-pr':''}">
-        <div class="bsr-year">${year}${virt?' · <span class="bsr-vtag">VIRTUAL</span>':''}</div>
+      return`<div class="bsr-card ${isPR?'bsr-pr':''}">
+        <div class="bsr-year">${date.slice(0,4)}${virt?' · <span class="bsr-vtag">VIRTUAL</span>':''}</div>
         <div class="bsr-time">${time}</div>
         <div class="bsr-meta">${ag}${oa?' · #'+oa+' OA':''}</div>
       </div>`;
@@ -569,16 +577,14 @@ function renderBoston(races){
     .map(r=>{
       const time=gf(r,'Chip Time')||'—';
       const date=gf(r,'Date','_date_str')||'';
-      const year=date.slice(0,4);
       const virt=isV(r);
       const isPR=time===prTime&&!virt;
-      const ed=r.edition||'—';
       const oa=gf(r,'OA\nPlace'),of_=gf(r,'OA\nField');
       const pace=gf(r,'Pace\n/mi')||'—';
-      return `<div class="bos-card ${virt?'bos-virtual':''} ${isPR?'bos-pr':''}">
-        <div class="bos-edition">${ed}${isPR?' · PR':''}</div>
+      return`<div class="bos-card ${virt?'bos-virtual':''} ${isPR?'bos-pr':''}">
+        <div class="bos-edition">${r.edition||'—'}${isPR?' · PR':''}</div>
         <div class="bos-time">${time}</div>
-        <div class="bos-year">${year}${virt?' — Virtual':''}</div>
+        <div class="bos-year">${date.slice(0,4)}${virt?' — Virtual':''}</div>
         <div class="bos-stats">
           <span>${pace} /mi</span>
           ${oa&&of_?`<span>#${oa} of ${of_}</span>`:''}
@@ -592,71 +598,70 @@ function renderUltras(races){
     .sort((a,b)=>(gf(a,'Date')||'').localeCompare(gf(b,'Date')||''))
     .map(r=>{
       const date=gf(r,'Date','_date_str')||'';
-      const year=date.slice(0,4);
-      const name=gf(r,'Race Name')||'';
-      const dist=gf(r,'Distance')||'';
-      const time=gf(r,'Chip Time')||'—';
       const oa=gf(r,'OA\nPlace'),of_=gf(r,'OA\nField');
       const gp=gf(r,'Gender\nPlace');
       const award=gf(r,'Award')||'';
       const placeStr=oa?(of_?`${oa}/${of_} OA`:`#${oa} OA`):'';
-      const gStr=gp?` · ${gp}M`:'';
-      return `<div class="ultra-row ${award?'has-award':''}">
-        <div class="ultra-date">${year}</div>
-        <div class="ultra-name">${name}</div>
-        <div class="ultra-dist">${dist}</div>
-        <div class="ultra-time">${time}</div>
+      return`<div class="ultra-row ${award?'has-award':''}">
+        <div class="ultra-date">${date.slice(0,4)}</div>
+        <div class="ultra-name">${gf(r,'Race Name')||''}</div>
+        <div class="ultra-dist">${gf(r,'Distance')||''}</div>
+        <div class="ultra-time">${gf(r,'Chip Time')||'—'}</div>
         <div class="ultra-right">
-          <div class="ultra-place">${placeStr}${gStr}</div>
+          <div class="ultra-place">${placeStr}${gp?' · '+gp+'M':''}</div>
           ${award?`<div class="ultra-award">${award}</div>`:''}
         </div>
       </div>`;
     }).join('');
 }
 
-function renderSmashrun(){
-  document.getElementById('strava-years').innerHTML=[...SMASHRUN].reverse().map((y,i)=>{
-    const stats=[
-      {lbl:'Total Miles',val:y.miles.toLocaleString()},
+function renderAnnual(){
+  document.getElementById('annual-grid').innerHTML=[...ANNUAL].reverse().map((y,i)=>{
+    const smashStats=[
       {lbl:'Avg Pace',val:y.pace+' /mi'},
       {lbl:'Avg Run Length',val:y.avg_len+' mi'},
       {lbl:'Days per Week',val:String(y.days_wk)},
-      {lbl:'Longest Run',val:y.longest+' mi'},
-      {lbl:'Longest Streak',val:y.streak+'d · '+y.streak_dates},
+      {lbl:'Longest Run',val:y.longest},
+      {lbl:'Longest Streak',val:y.streak},
       {lbl:'Most Run Day',val:y.most_day},
       {lbl:'% PM Runs',val:y.pct_pm+'%'},
-      ...(y.hours?[{lbl:'Total Hours',val:y.hours.toLocaleString()}]:[{lbl:'Total Hours',val:'TODO: Pull from Strava export'}]),
-      ...(y.elev?[{lbl:'Elevation Gain',val:y.elev.toLocaleString()+' ft'}]:[{lbl:'Elevation Gain',val:'TODO: Pull from Strava export'}]),
     ];
-    return `<div class="strava-year-block">
-      <div class="strava-year-hdr" onclick="toggleStrava(${i})">
-        <div class="strava-yr-label">${y.year}</div>
+    const stravaStats=[
+      {lbl:'Total Hours',val:y.strava_hours?y.strava_hours.toLocaleString()+' hrs':'—',todo:!y.strava_hours},
+      {lbl:'Elevation Gain',val:y.strava_elev?y.strava_elev.toLocaleString()+' ft':'—',todo:!y.strava_elev},
+    ];
+    return`<div class="annual-card">
+      <div class="annual-card-hdr" onclick="toggleAnnual(${i})">
         <div>
-          <div class="strava-yr-miles">${y.miles.toLocaleString()} miles</div>
-          <div class="strava-yr-sub">${y.pace} avg pace · ${y.days_wk} days/wk</div>
+          <div class="annual-yr">${y.year}</div>
+          <div class="annual-miles">${y.miles.toLocaleString()} miles</div>
+          <div class="annual-pace">${y.pace} avg pace</div>
         </div>
-        <div class="strava-yr-chevron" id="strava-chev-${i}">▼</div>
+        <div class="annual-chev" id="ann-chev-${i}">▼</div>
       </div>
-      <div class="strava-yr-body ${i===0?'open':''}" id="strava-body-${i}">
-        <div class="strava-yr-grid">${stats.map(s=>`
-          <div class="strava-stat">
-            <div class="strava-stat-lbl">${s.lbl}</div>
-            <div class="strava-stat-val">${s.val}</div>
-          </div>`).join('')}
+      <div class="annual-body ${i===0?'open':''}" id="ann-body-${i}">
+        <div class="annual-sources">
+          <span class="src-tab active-smash">SmashRun</span>
+          <span class="src-tab active-strava">Strava</span>
+        </div>
+        <div class="annual-stats">
+          ${smashStats.map(s=>`<div class="ann-stat"><div class="ann-lbl">${s.lbl}</div><div class="ann-val">${s.val}</div></div>`).join('')}
+          ${stravaStats.map(s=>`<div class="ann-stat"><div class="ann-lbl">${s.lbl}</div><div class="ann-val ${s.todo?'todo':''}">${s.val}</div></div>`).join('')}
         </div>
       </div>
     </div>`;
   }).join('');
-  const chev=document.getElementById('strava-chev-0');
-  if(chev)chev.style.transform='rotate(180deg)';
+  // Open first chevron
+  const c=document.getElementById('ann-chev-0');
+  if(c)c.style.transform='rotate(180deg)';
 }
 
-function toggleStrava(i){
-  const body=document.getElementById('strava-body-'+i);
-  const chev=document.getElementById('strava-chev-'+i);
+function toggleAnnual(i){
+  const body=document.getElementById('ann-body-'+i);
+  const chev=document.getElementById('ann-chev-'+i);
   if(!body)return;
   const open=body.classList.toggle('open');
-  if(chev)chev.style.transform=open?'rotate(180deg)':'rotate(0deg)';
+  if(chev)chev.style.transform=open?'rotate(180deg)':'none';
 }
 
 init();
